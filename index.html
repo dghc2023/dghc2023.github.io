@@ -6,447 +6,395 @@
 <title>郑传荣 · 个人简历</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 
 :root{
-  --bg:#f5f3ef;
-  --card:#ffffff;
-  --navy:#1e3a5f;
-  --navy-light:#2c5282;
-  --gold:#b8954e;
-  --gold-light:#d4b06a;
-  --text:#1e1e2a;
-  --text-secondary:#6b6560;
-  --text-muted:#99948e;
-  --border:#e8e3da;
-  --shadow:0 2px 20px rgba(30,58,95,0.06);
-  --shadow-hover:0 12px 40px rgba(30,58,95,0.10);
-  --radius:12px;
-  --font-serif:'DM Serif Display',Georgia,serif;
-  --font-sans:'DM Sans','Segoe UI',sans-serif;
+  --bg:#eef0f2;
+  --surface:#fff;
+  --sidebar:#f8f9fb;
+  --blue:#2563eb;
+  --blue-light:#dbeafe;
+  --blue-dark:#1e40af;
+  --text:#1e293b;
+  --text-secondary:#64748b;
+  --text-muted:#94a3b8;
+  --border:#e2e6ea;
+  --shadow:0 1px 8px rgba(0,0,0,0.06);
 }
 
-html{scroll-behavior:smooth}
 body{
-  font-family:var(--font-sans);
+  font-family:'Sora','Segoe UI',sans-serif;
   background:var(--bg);
   color:var(--text);
-  line-height:1.6;
+  line-height:1.5;
   -webkit-font-smoothing:antialiased;
-  min-height:100vh;
 }
 
-/* ─── container ─── */
-.container{max-width:888px;margin:0 auto;padding:0 24px}
+/* ─── page ─── */
+.page{
+  max-width:900px;margin:32px auto;padding:0 16px;
+}
 
-/* ─── top bar ─── */
-.top-bar{
-  padding:20px 0;margin-bottom:12px;
-  display:flex;justify-content:flex-end;align-items:center;
+/* ─── resume two-column ─── */
+.resume{
+  background:var(--surface);border-radius:16px;
+  box-shadow:var(--shadow);overflow:hidden;
+  display:grid;grid-template-columns:280px 1fr;
+  min-height:700px;
 }
-.top-bar a{
-  font-size:13px;color:var(--text-muted);text-decoration:none;
-  display:inline-flex;align-items:center;gap:6px;
-  transition:color .2s;
-}
-.top-bar a:hover{color:var(--navy)}
 
-/* ─── header card ─── */
-.header-card{
-  background:var(--card);
-  border-radius:var(--radius);
-  box-shadow:var(--shadow);
-  padding:48px 52px 44px;
-  margin-bottom:24px;
-  position:relative;overflow:hidden;
+/* ═══ SIDEBAR ═══ */
+.sidebar{
+  background:var(--sidebar);padding:36px 28px;
+  border-right:1px solid var(--border);
+  display:flex;flex-direction:column;gap:24px;
 }
-.header-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:3px;
-  background:linear-gradient(90deg,var(--gold),var(--navy),var(--gold));
-}
-.header-top{
-  display:flex;justify-content:space-between;align-items:flex-start;
-  flex-wrap:wrap;gap:20px;
-}
-.name-title h1{
-  font-family:var(--font-serif);font-size:44px;font-weight:400;
-  color:var(--navy);letter-spacing:-0.5px;line-height:1.1;
-}
-.name-title .sub{
-  font-size:16px;color:var(--text-secondary);
-  margin-top:4px;font-weight:400;letter-spacing:0.3px;
-}
-.header-right{text-align:right;flex-shrink:0}
-.header-right .label{
-  font-size:12px;color:var(--text-muted);
-  text-transform:uppercase;letter-spacing:2px;margin-bottom:4px;
-}
-.header-right .value{
-  font-size:15px;color:var(--navy);font-weight:500;
-}
-.contact-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  gap:10px;margin-top:24px;padding-top:20px;
-  border-top:1px solid var(--border);
-}
-.contact-item{
-  display:flex;align-items:center;gap:10px;
-  font-size:14px;color:var(--text-secondary);text-decoration:none;
-  transition:color .2s;
-}
-.contact-item svg{
-  width:16px;height:16px;flex-shrink:0;
-  color:var(--gold);opacity:0.8;
-}
-.contact-item:hover{color:var(--navy)}
-.contact-item:hover svg{opacity:1}
 
-/* ─── section ─── */
-section{margin-bottom:24px}
-.section-card{
-  background:var(--card);
-  border-radius:var(--radius);
-  box-shadow:var(--shadow);
-  padding:36px 44px;
+/* avatar */
+.avatar-wrap{
+  text-align:center;
 }
-.section-head{
-  display:flex;align-items:center;gap:14px;margin-bottom:22px;
-}
-.section-head .icon{
-  width:32px;height:32px;border-radius:8px;
-  background:var(--navy);color:white;
+.avatar{
+  width:120px;height:120px;border-radius:50%;
+  background:var(--blue-light);
+  margin:0 auto 12px;
   display:flex;align-items:center;justify-content:center;
-  font-size:14px;flex-shrink:0;
+  overflow:hidden;
+  border:3px solid var(--surface);
+  box-shadow:0 2px 12px rgba(37,99,235,0.12);
 }
-.section-head h2{
-  font-family:var(--font-serif);font-size:20px;font-weight:400;
-  color:var(--navy);
+.avatar svg{width:56px;height:56px;color:var(--blue);opacity:0.6;}
+.avatar img{width:100%;height:100%;object-fit:cover}
+
+.sidebar-name h1{
+  font-size:20px;font-weight:700;color:var(--text);
+  text-align:center;line-height:1.2;
 }
-.section-head .line{
-  flex:1;height:1px;
-  background:linear-gradient(90deg,var(--border),transparent);
-}
-.section-head .badge{
-  font-size:11px;color:var(--text-muted);
-  font-family:var(--font-sans);
-  text-transform:uppercase;letter-spacing:1.5px;
+.sidebar-name .title{
+  font-size:12px;color:var(--text-secondary);
+  text-align:center;margin-top:2px;font-weight:400;
 }
 
-/* ─── about ─── */
-.about-text{
-  font-size:15px;color:var(--text-secondary);line-height:1.8;font-weight:400;
-}
-.about-text strong{color:var(--text);font-weight:500}
-
-/* ─── skills ─── */
-.skills-wrap{display:flex;flex-wrap:wrap;gap:8px}
-.skill-tag{
-  padding:6px 16px;border-radius:6px;
-  font-size:13px;font-weight:500;color:var(--navy);
-  background:rgba(30,58,95,0.06);
-  border:1px solid rgba(30,58,95,0.08);
-  transition:all .25s ease;cursor:default;
-}
-.skill-tag:hover{
-  background:var(--navy);color:white;
-  transform:translateY(-2px);
-  box-shadow:0 4px 12px rgba(30,58,95,0.15);
+/* sidebar section */
+.sb-section{margin-top:4px}
+.sb-section h3{
+  font-size:11px;text-transform:uppercase;
+  letter-spacing:1.5px;color:var(--text-muted);
+  margin-bottom:10px;font-weight:600;
 }
 
-/* ─── projects ─── */
-.project-item{
-  padding:24px 0;border-bottom:1px solid var(--border);
-  transition:all .3s ease;border-radius:8px;margin:0 -12px;
-  padding:24px 12px;
+/* contact */
+.sb-contact{display:flex;flex-direction:column;gap:8px}
+.sb-contact a,.sb-contact .sb-contact-item{
+  display:flex;align-items:center;gap:10px;
+  font-size:12px;color:var(--text-secondary);text-decoration:none;
+  line-height:1.3;transition:color .15s;
 }
-.project-item:last-child{border-bottom:none}
-.project-item:hover{
-  background:rgba(30,58,95,0.02);
+.sb-contact a:hover{color:var(--blue)}
+.sb-contact svg{
+  width:14px;height:14px;flex-shrink:0;
+  color:var(--blue);opacity:0.7;
 }
-.project-top{
-  display:flex;justify-content:space-between;align-items:flex-start;
-  flex-wrap:wrap;gap:6px;margin-bottom:4px;
-}
-.project-top h3{
-  font-family:var(--font-serif);font-size:18px;font-weight:400;
-  color:var(--navy);
-}
-.project-top .date{
-  font-size:13px;color:var(--text-muted);white-space:nowrap;
-}
-.project-item .role{
-  font-size:13px;color:var(--gold);font-weight:500;margin-bottom:8px;
-}
-.project-item p{
-  font-size:14px;color:var(--text-secondary);line-height:1.7;
-}
-.project-tags{
-  display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;
-}
-.project-tags span{
+
+/* skills in sidebar */
+.sb-skills{display:flex;flex-wrap:wrap;gap:5px}
+.sb-skill{
   font-size:11px;padding:3px 10px;border-radius:4px;
-  background:rgba(184,149,78,0.06);
-  color:var(--gold);
-  border:1px solid rgba(184,149,78,0.12);
+  background:var(--blue-light);color:var(--blue-dark);
   font-weight:500;letter-spacing:0.2px;
 }
 
-/* ─── education ─── */
+/* interests */
+.sb-interests{display:flex;flex-wrap:wrap;gap:6px}
+.sb-interest{
+  font-size:11px;color:var(--text-muted);
+  padding:3px 0;
+}
+
+.divider{height:1px;background:var(--border);margin:4px 0}
+
+/* ═══ MAIN ═══ */
+.main{padding:36px 40px;display:flex;flex-direction:column;gap:0}
+
+/* main header */
+.main-header{
+  margin-bottom:16px;padding-bottom:16px;
+  border-bottom:2px solid var(--blue);
+}
+.main-header h1{
+  font-size:28px;font-weight:700;color:var(--text);
+  letter-spacing:-0.3px;
+}
+.main-header .sub{
+  font-size:14px;color:var(--text-secondary);margin-top:2px;
+  font-weight:400;
+}
+.main-header .github{
+  display:inline-block;margin-top:6px;
+  font-size:12px;color:var(--blue);text-decoration:none;
+  font-weight:500;
+}
+.main-header .github:hover{text-decoration:underline}
+
+/* sections */
+.sec{margin-bottom:20px}
+.sec-head{
+  display:flex;align-items:center;gap:10px;margin-bottom:10px;
+}
+.sec-head .dot{
+  width:6px;height:6px;border-radius:50%;background:var(--blue);flex-shrink:0;
+}
+.sec-head h2{
+  font-size:15px;font-weight:600;color:var(--text);
+  letter-spacing:0.3px;
+}
+.sec-head .line{
+  flex:1;height:1px;background:var(--border);
+}
+
+/* about */
+.about-text{font-size:13px;color:var(--text-secondary);line-height:1.7;}
+
+/* project */
+.proj{padding:14px 0 12px}
+.proj+.proj{border-top:1px solid var(--border)}
+.proj-head{
+  display:flex;justify-content:space-between;align-items:baseline;
+  flex-wrap:wrap;gap:4px;margin-bottom:2px;
+}
+.proj-head h3{font-size:14px;font-weight:600;color:var(--text)}
+.proj-head .date{font-size:11px;color:var(--text-muted);white-space:nowrap}
+.proj .role{font-size:12px;color:var(--blue);font-weight:500;margin-bottom:3px}
+.proj p{font-size:12px;color:var(--text-secondary);line-height:1.6;}
+.proj-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+.proj-tags span{
+  font-size:10px;padding:2px 8px;border-radius:3px;
+  background:#f1f5f9;color:var(--text-secondary);
+  font-weight:500;
+}
+
+/* education */
 .edu-item{
   display:flex;justify-content:space-between;align-items:center;
-  flex-wrap:wrap;gap:8px;
+  flex-wrap:wrap;gap:6px;
 }
-.edu-item h3{
-  font-family:var(--font-serif);font-size:18px;font-weight:400;
-  color:var(--navy);
-}
-.edu-item .meta{font-size:14px;color:var(--text-secondary)}
-.edu-item .date{font-size:13px;color:var(--text-muted)}
+.edu-item h3{font-size:14px;font-weight:600}
+.edu-item .meta{font-size:12px;color:var(--text-secondary)}
+.edu-item .date{font-size:12px;color:var(--text-muted)}
 
-/* ─── footer ─── */
-footer{
-  text-align:center;padding:32px 0 40px;
-}
-footer p{
-  font-size:12px;color:var(--text-muted);letter-spacing:0.5px;
-}
-footer a{color:var(--navy);text-decoration:none}
-footer a:hover{text-decoration:underline}
+/* footer */
+.footer{text-align:center;padding:20px 0 28px}
+.footer p{font-size:11px;color:var(--text-muted)}
 
-/* ─── reveal ─── */
-.reveal{opacity:0;transform:translateY(20px);transition:all .7s cubic-bezier(.22,1,.36,1)}
-.reveal.visible{opacity:1;transform:translateY(0)}
-.reveal-d1{transition-delay:.1s}
-.reveal-d2{transition-delay:.2s}
-.reveal-d3{transition-delay:.3s}
-
-/* ─── responsive ─── */
-@media(max-width:640px){
-  .container{padding:0 16px}
-  .header-card{padding:28px 24px}
-  .header-top{flex-direction:column}
-  .header-right{text-align:left}
-  .name-title h1{font-size:32px}
-  .contact-grid{grid-template-columns:1fr}
-  .section-card{padding:24px 20px}
-  .project-item{margin:0;padding:20px 0}
-  .section-head .icon{width:28px;height:28px;font-size:12px}
-}
-
+/* ─── print ─── */
 @media print{
-  body{background:white}
-  .header-card,.section-card{box-shadow:none;border:1px solid var(--border);border-radius:4px}
-  .reveal{opacity:1;transform:none}
+  body{background:#fff;padding:0}
+  .page{max-width:100%;margin:0;padding:0}
+  .resume{box-shadow:none;border-radius:0;min-height:auto}
+}
+
+/* ─── mobile ─── */
+@media(max-width:680px){
+  .resume{grid-template-columns:1fr}
+  .sidebar{border-right:none;border-bottom:1px solid var(--border)}
+  .page{margin:0;padding:0}
+  .resume{border-radius:0}
+  .main{padding:24px 20px}
 }
 </style>
 </head>
 <body>
 
-<div class="container">
+<div class="page">
+  <div class="resume">
 
-  <!-- top -->
-  <div class="top-bar reveal">
-    <a href="#" onclick="window.print()">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
-      打印 / PDF
-    </a>
+    <!-- ═══ SIDEBAR ═══ -->
+    <aside class="sidebar">
+
+      <div class="avatar-wrap">
+        <div class="avatar">
+          <!-- 替换为你的照片：用 <img src="photo.jpg"> 替换下面这段 svg -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="sidebar-name">
+        <h1>郑传荣</h1>
+        <div class="title">全栈开发工程师</div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="sb-section">
+        <h3>联系方式</h3>
+        <div class="sb-contact">
+          <a href="tel:138XXXXXXXX">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            138XXXXXXXX
+          </a>
+          <a href="mailto:zhengcr@example.com">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            zhengcr@example.com
+          </a>
+          <span class="sb-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            中国 · 杭州
+          </span>
+          <a href="https://github.com/dghc2023" target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            dghc2023
+          </a>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="sb-section">
+        <h3>技术栈</h3>
+        <div class="sb-skills">
+          <span class="sb-skill">Python</span>
+          <span class="sb-skill">JavaScript</span>
+          <span class="sb-skill">TypeScript</span>
+          <span class="sb-skill">Vue.js</span>
+          <span class="sb-skill">React</span>
+          <span class="sb-skill">Node.js</span>
+          <span class="sb-skill">Django</span>
+          <span class="sb-skill">FastAPI</span>
+          <span class="sb-skill">MySQL</span>
+          <span class="sb-skill">PostgreSQL</span>
+          <span class="sb-skill">Redis</span>
+          <span class="sb-skill">Docker</span>
+          <span class="sb-skill">Nginx</span>
+          <span class="sb-skill">Linux</span>
+          <span class="sb-skill">Git</span>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="sb-section">
+        <h3>兴趣</h3>
+        <div class="sb-interests">
+          <span class="sb-interest">开源社区</span>
+          <span class="sb-interest">AI 应用</span>
+          <span class="sb-interest">摄影</span>
+          <span class="sb-interest">骑行</span>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- ═══ MAIN ═══ -->
+    <main class="main">
+
+      <div class="main-header">
+        <h1>郑传荣</h1>
+        <div class="sub">全栈开发工程师 · 计算机科学与技术</div>
+        <a class="github" href="https://github.com/dghc2023" target="_blank">github.com/dghc2023</a>
+      </div>
+
+      <!-- 个人简介 -->
+      <div class="sec">
+        <div class="sec-head">
+          <span class="dot"></span>
+          <h2>个人简介</h2>
+          <span class="line"></span>
+        </div>
+        <div class="about-text">
+          计算机科学与技术专业本科，4 年全栈开发经验。
+          从后端 API 设计到前端交互体验，再到部署运维与性能优化，具备全链路工程能力。
+          注重代码质量与工程规范，善于从业务视角推动技术方案落地。
+        </div>
+      </div>
+
+      <!-- 项目经历 -->
+      <div class="sec">
+        <div class="sec-head">
+          <span class="dot"></span>
+          <h2>项目经历</h2>
+          <span class="line"></span>
+        </div>
+
+        <div class="proj">
+          <div class="proj-head">
+            <h3>智荐 · 个性化推荐引擎</h3>
+            <span class="date">2025.09 - 2025.12</span>
+          </div>
+          <div class="role">核心开发者 · Python / FastAPI</div>
+          <p>
+            基于协同过滤与内容理解的推荐系统。负责多路召回策略设计与线上 API 开发，
+            集成实时特征计算，支撑日均 50 万次推荐请求。上线后用户点击率提升 35%，
+            服务端响应时间控制在 80ms 以内。
+          </p>
+          <div class="proj-tags">
+            <span>Python</span><span>TensorFlow</span><span>FastAPI</span>
+            <span>PostgreSQL</span><span>Redis</span><span>Docker</span>
+          </div>
+        </div>
+
+        <div class="proj">
+          <div class="proj-head">
+            <h3>启航 · 全栈电商管理平台</h3>
+            <span class="date">2025.03 - 2025.08</span>
+          </div>
+          <div class="role">全栈开发 · Vue3 / Django</div>
+          <p>
+            面向中小商家的 B2B 电商管理系统，涵盖商品、订单、库存、数据看板模块。
+            独立完成前后端全栈开发，采用前后端分离架构，10 万+ SKU 场景下
+            订单处理效率较旧系统提升 60%，接口响应时间降低 40%。
+          </p>
+          <div class="proj-tags">
+            <span>Vue3</span><span>TypeScript</span><span>Django</span>
+            <span>MySQL</span><span>Redis</span><span>Docker</span>
+          </div>
+        </div>
+
+        <div class="proj">
+          <div class="proj-head">
+            <h3>观澜 · 实时数据分析平台</h3>
+            <span class="date">2024.10 - 2025.01</span>
+          </div>
+          <div class="role">前端负责人 · React / D3.js</div>
+          <p>
+            面向运营团队的多维度实时数据看板，支持自定义指标、毫秒级数据推送和下钻分析。
+            负责前端架构搭建与大屏可视化方案设计，日处理 200 万+ 事件数据，
+            页面首屏加载时间优化至 1.2 秒以内。
+          </p>
+          <div class="proj-tags">
+            <span>React</span><span>D3.js</span><span>Node.js</span>
+            <span>WebSocket</span><span>PostgreSQL</span><span>Nginx</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 教育背景 -->
+      <div class="sec">
+        <div class="sec-head">
+          <span class="dot"></span>
+          <h2>教育背景</h2>
+          <span class="line"></span>
+        </div>
+        <div class="edu-item">
+          <div>
+            <h3>计算机科学与技术</h3>
+            <div class="meta">某某大学 · 本科</div>
+          </div>
+          <span class="date">2021 - 2025</span>
+        </div>
+      </div>
+
+    </main>
   </div>
 
-  <!-- ═══ HEADER ═══ -->
-  <header class="header-card reveal">
-    <div class="header-top">
-      <div class="name-title">
-        <h1>郑传荣</h1>
-        <div class="sub">全栈开发者 · 计算机科学与技术</div>
-      </div>
-      <div class="header-right">
-        <div class="label">GitHub</div>
-        <div class="value">
-          <a href="https://github.com/dghc2023" target="_blank" style="color:var(--navy);text-decoration:none">github.com/dghc2023</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="contact-grid">
-      <a href="mailto:zhengcr@example.com" class="contact-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        zhengcr@example.com
-      </a>
-      <a href="tel:+86138XXXXXXXX" class="contact-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.8 19.8 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
-        138XXXXXXXX
-      </a>
-      <span class="contact-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        中国 · 杭州
-      </span>
-      <span class="contact-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-        4 年经验 · 本科
-      </span>
-    </div>
-  </header>
-
-  <!-- ═══ ABOUT ═══ -->
-  <section class="reveal reveal-d1">
-    <div class="section-card">
-      <div class="section-head">
-        <div class="icon">&#9733;</div>
-        <h2>关于我</h2>
-        <span class="line"></span>
-        <span class="badge">About</span>
-      </div>
-      <div class="about-text">
-        <p>
-          计算机科学与技术专业出身，<strong>4 年全栈开发经验</strong>。
-          从后端 API 设计到前端交互体验，再到服务部署与性能优化，习惯全链路思考。
-          相信好的工程实践能带来更可靠的系统和更高效的团队协作。
-        </p>
-        <p style="margin-top:12px">
-          业余关注开源社区与 AI 工程化落地，喜欢通过技术博客和 side project 保持对新技术的好奇心。
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ SKILLS ═══ -->
-  <section class="reveal reveal-d1">
-    <div class="section-card">
-      <div class="section-head">
-        <div class="icon">&#9881;</div>
-        <h2>技术栈</h2>
-        <span class="line"></span>
-        <span class="badge">Skills</span>
-      </div>
-      <div class="skills-wrap">
-        <span class="skill-tag">Python</span>
-        <span class="skill-tag">JavaScript</span>
-        <span class="skill-tag">TypeScript</span>
-        <span class="skill-tag">Vue.js</span>
-        <span class="skill-tag">React</span>
-        <span class="skill-tag">Node.js</span>
-        <span class="skill-tag">Django</span>
-        <span class="skill-tag">FastAPI</span>
-        <span class="skill-tag">MySQL</span>
-        <span class="skill-tag">PostgreSQL</span>
-        <span class="skill-tag">Redis</span>
-        <span class="skill-tag">Docker</span>
-        <span class="skill-tag">Nginx</span>
-        <span class="skill-tag">Linux</span>
-        <span class="skill-tag">Git</span>
-        <span class="skill-tag">REST API</span>
-        <span class="skill-tag">WebSocket</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ PROJECTS ═══ -->
-  <section class="reveal reveal-d2">
-    <div class="section-card">
-      <div class="section-head">
-        <div class="icon">&#9998;</div>
-        <h2>项目经历</h2>
-        <span class="line"></span>
-        <span class="badge">Projects</span>
-      </div>
-
-      <div class="project-item">
-        <div class="project-top">
-          <h3>智荐 · 个性化推荐引擎</h3>
-          <span class="date">2025.09 - 2025.12</span>
-        </div>
-        <div class="role">核心开发者</div>
-        <p>
-          基于协同过滤与内容理解的个性化推荐系统。负责召回层设计与线上服务开发，
-          集成多路召回策略与实时特征计算，支撑日均 50 万次推荐请求。上线后用户点击率提升 35%。
-        </p>
-        <div class="project-tags">
-          <span>Python</span><span>TensorFlow</span><span>FastAPI</span>
-          <span>PostgreSQL</span><span>Redis</span><span>Docker</span>
-        </div>
-      </div>
-
-      <div class="project-item">
-        <div class="project-top">
-          <h3>启航 · 全栈电商管理平台</h3>
-          <span class="date">2025.03 - 2025.08</span>
-        </div>
-        <div class="role">全栈开发</div>
-        <p>
-          面向中小商家的 B2B 电商管理系统，涵盖商品管理、订单流转、库存预警与数据看板。
-          独立完成前后端全栈开发，采用前后端分离架构，支持 10 万+ 商品 SKU，
-          订单处理效率较旧系统提升 60%。
-        </p>
-        <div class="project-tags">
-          <span>Vue3</span><span>TypeScript</span><span>Django</span>
-          <span>MySQL</span><span>Redis</span><span>Docker</span>
-        </div>
-      </div>
-
-      <div class="project-item">
-        <div class="project-top">
-          <h3>观澜 · 实时数据分析平台</h3>
-          <span class="date">2024.10 - 2025.01</span>
-        </div>
-        <div class="role">前端负责人</div>
-        <p>
-          面向运营团队的多维度实时数据看板，支持自定义指标与毫秒级数据推送。
-          负责前端架构设计与大屏可视化开发，基于 React + D3.js + WebSocket
-          实现流畅的实时数据展示，日处理 200 万+ 事件数据。
-        </p>
-        <div class="project-tags">
-          <span>React</span><span>D3.js</span><span>Node.js</span>
-          <span>WebSocket</span><span>PostgreSQL</span><span>Nginx</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ EDUCATION ═══ -->
-  <section class="reveal reveal-d3">
-    <div class="section-card">
-      <div class="section-head">
-        <div class="icon">&#9901;</div>
-        <h2>教育背景</h2>
-        <span class="line"></span>
-        <span class="badge">Education</span>
-      </div>
-      <div class="edu-item">
-        <div>
-          <h3>计算机科学与技术</h3>
-          <div class="meta">某某大学 · 本科</div>
-        </div>
-        <div class="date">2021 - 2025</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ FOOTER ═══ -->
-  <footer>
-    <p>
-      &copy; 2026 郑传荣 &nbsp;&nbsp;|&nbsp;&nbsp;
-      <a href="https://github.com/dghc2023" target="_blank">GitHub</a>
-      &nbsp;&nbsp;|&nbsp;&nbsp;
-      在线简历
-    </p>
+  <footer class="footer">
+    <p>&copy; 2026 郑传荣 &nbsp;·&nbsp; 在线简历 &nbsp;·&nbsp; <a href="https://github.com/dghc2023" target="_blank" style="color:var(--blue);text-decoration:none">GitHub</a></p>
   </footer>
-
 </div>
 
-<script>
-const observer=new IntersectionObserver(e=>{
-  e.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    }
-  });
-},{threshold:0.08});
-
-document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-</script>
 </body>
 </html>
