@@ -32,10 +32,7 @@ body{
   -webkit-font-smoothing:antialiased;
 }
 
-/* ─── page ─── */
-.page{
-  max-width:900px;margin:32px auto;padding:0 16px;
-}
+.page{max-width:900px;margin:32px auto;padding:0 16px}
 
 /* ─── print button ─── */
 .print-bar{
@@ -59,23 +56,20 @@ body{
 .resume{
   background:var(--surface);border-radius:16px;
   box-shadow:var(--shadow);overflow:hidden;
-  display:grid;grid-template-columns:280px 1fr;
-  min-height:700px;
+  display:grid;grid-template-columns:270px 1fr;
 }
 
 /* ═══ SIDEBAR ═══ */
 .sidebar{
-  background:var(--sidebar);padding:36px 28px;
+  background:var(--sidebar);padding:32px 24px;
   border-right:1px solid var(--border);
-  display:flex;flex-direction:column;gap:20px;
+  display:flex;flex-direction:column;gap:18px;
 }
 
-/* avatar */
 .avatar-wrap{text-align:center}
 .avatar{
-  width:120px;height:120px;border-radius:50%;
-  background:var(--blue-light);
-  margin:0 auto 12px;overflow:hidden;
+  width:110px;height:110px;border-radius:50%;
+  margin:0 auto 10px;overflow:hidden;
   border:3px solid var(--surface);
   box-shadow:0 2px 12px rgba(37,99,235,0.12);
 }
@@ -90,15 +84,13 @@ body{
   text-align:center;margin-top:2px;font-weight:400;
 }
 
-/* sidebar section */
 .sb-section h3{
   font-size:11px;text-transform:uppercase;
   letter-spacing:1.5px;color:var(--text-muted);
   margin-bottom:8px;font-weight:600;
 }
 
-/* contact */
-.sb-contact{display:flex;flex-direction:column;gap:7px}
+.sb-contact{display:flex;flex-direction:column;gap:6px}
 .sb-contact a,.sb-contact .sb-contact-item{
   display:flex;align-items:center;gap:8px;
   font-size:12px;color:var(--text-secondary);text-decoration:none;
@@ -110,16 +102,14 @@ body{
   color:var(--blue);opacity:0.7;
 }
 
-/* skills in sidebar */
-.sb-skills{display:flex;flex-wrap:wrap;gap:5px}
+.sb-skills{display:flex;flex-wrap:wrap;gap:4px}
 .sb-skill{
-  font-size:11px;padding:3px 10px;border-radius:4px;
+  font-size:10px;padding:3px 9px;border-radius:4px;
   background:var(--blue-light);color:var(--blue-dark);
-  font-weight:500;
+  font-weight:500;line-height:1.4;
 }
 
-/* awards */
-.sb-awards{display:flex;flex-direction:column;gap:5px}
+.sb-awards{display:flex;flex-direction:column;gap:4px}
 .sb-award{
   font-size:11px;color:var(--text-secondary);
   padding-left:10px;position:relative;line-height:1.4;
@@ -132,10 +122,10 @@ body{
 .divider{height:1px;background:var(--border);margin:2px 0}
 
 /* ═══ MAIN ═══ */
-.main{padding:32px 36px;display:flex;flex-direction:column;gap:0}
+.main{padding:28px 32px;display:flex;flex-direction:column;gap:0}
 
 .main-header{
-  margin-bottom:14px;padding-bottom:14px;
+  margin-bottom:12px;padding-bottom:12px;
   border-bottom:2px solid var(--blue);
 }
 .main-header h1{
@@ -153,9 +143,7 @@ body{
 }
 .main-header .github:hover{text-decoration:underline}
 
-/* sections */
-.sec{margin-bottom:16px}
-.sec:last-child{margin-bottom:0}
+.sec{margin-bottom:14px}
 .sec-head{
   display:flex;align-items:center;gap:10px;margin-bottom:8px;
 }
@@ -164,27 +152,23 @@ body{
 }
 .sec-head h2{
   font-size:14px;font-weight:600;color:var(--text);
-  letter-spacing:0.3px;
 }
-.sec-head .line{
-  flex:1;height:1px;background:var(--border);
-}
+.sec-head .line{flex:1;height:1px;background:var(--border)}
 
-/* about */
 .about-text{font-size:12px;color:var(--text-secondary);line-height:1.7;}
 
 /* project */
-.proj{padding:12px 0 10px}
+.proj{padding:10px 0 8px}
 .proj+.proj{border-top:1px solid var(--border)}
 .proj-head{
   display:flex;justify-content:space-between;align-items:baseline;
-  flex-wrap:wrap;gap:4px;margin-bottom:1px;
+  flex-wrap:wrap;gap:2px;margin-bottom:1px;
 }
 .proj-head h3{font-size:13px;font-weight:600;color:var(--text)}
-.proj-head .date{font-size:11px;color:var(--text-muted);white-space:nowrap}
+.proj-head .date{font-size:10px;color:var(--text-muted);white-space:nowrap}
 .proj .role{font-size:11px;color:var(--blue);font-weight:500;margin-bottom:2px}
-.proj p{font-size:12px;color:var(--text-secondary);line-height:1.6;}
-.proj-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:5px}
+.proj p{font-size:11px;color:var(--text-secondary);line-height:1.6;}
+.proj-tags{display:flex;flex-wrap:wrap;gap:3px;margin-top:4px}
 .proj-tags span{
   font-size:10px;padding:2px 7px;border-radius:3px;
   background:#f1f5f9;color:var(--text-secondary);
@@ -200,24 +184,23 @@ body{
 /* footer */
 .footer{text-align:center;padding:16px 0 24px}
 .footer p{font-size:11px;color:var(--text-muted)}
+.footer a{color:var(--blue);text-decoration:none}
 
-/* ─── print styles ─── */
+/* ─── print ─── */
 @media print{
   body{background:#fff;padding:0!important}
   .page{max-width:100%;margin:0!important;padding:0!important}
-  .resume{box-shadow:none;border-radius:0;min-height:auto}
+  .resume{box-shadow:none;border-radius:0}
   .print-bar{display:none!important}
   .sb-skill{background:#e8e8e8!important;color:#333!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  .avatar{border:2px solid #ccc!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
   .sec-head .dot{background:#333!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
   .main-header{border-bottom-color:#333!important}
   .proj .role{color:#333!important}
 }
 
-/* ─── mobile ─── */
 @media(max-width:680px){
   .resume{grid-template-columns:1fr}
-  .sidebar{border-right:none;border-bottom:1px solid var(--border);padding:28px 20px}
+  .sidebar{border-right:none;border-bottom:1px solid var(--border);padding:24px 20px}
   .page{margin:0;padding:0}
   .resume{border-radius:0}
   .main{padding:20px}
@@ -229,7 +212,6 @@ body{
 
 <div class="page">
 
-  <!-- 打印按钮 -->
   <div class="print-bar">
     <button class="print-btn" onclick="window.print()">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><path d="M6 14h12v8H6z"/><path d="M18 12h.01"/></svg>
@@ -242,7 +224,6 @@ body{
     <!-- ═══ 左侧栏 ═══ -->
     <aside class="sidebar">
 
-      <!-- 头像 -->
       <div class="avatar-wrap">
         <div class="avatar">
           <img src="photo.jpg" alt="郑传荣">
@@ -251,12 +232,11 @@ body{
 
       <div class="sidebar-name">
         <h1>郑传荣</h1>
-        <div class="title">全栈开发工程师</div>
+        <div class="title">软件开发工程师</div>
       </div>
 
       <div class="divider"></div>
 
-      <!-- 联系方式 -->
       <div class="sb-section">
         <h3>联系方式</h3>
         <div class="sb-contact">
@@ -270,7 +250,7 @@ body{
           </a>
           <span class="sb-contact-item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            河南省信阳市
+            福建省厦门市
           </span>
           <a href="https://github.com/dghc2023" target="_blank">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
@@ -281,9 +261,8 @@ body{
 
       <div class="divider"></div>
 
-      <!-- 技术栈 -->
       <div class="sb-section">
-        <h3>技术栈</h3>
+        <h3>专业技能</h3>
         <div class="sb-skills">
           <span class="sb-skill">HTML/CSS</span>
           <span class="sb-skill">JavaScript</span>
@@ -294,6 +273,7 @@ body{
           <span class="sb-skill">Java</span>
           <span class="sb-skill">SpringBoot</span>
           <span class="sb-skill">LangChain4j</span>
+          <span class="sb-skill">OpenCV</span>
           <span class="sb-skill">Dify</span>
           <span class="sb-skill">Docker</span>
           <span class="sb-skill">Git</span>
@@ -302,15 +282,15 @@ body{
 
       <div class="divider"></div>
 
-      <!-- 荣誉奖项 -->
       <div class="sb-section">
-        <h3>荣誉奖项</h3>
+        <h3>证书 &amp; 荣誉</h3>
         <div class="sb-awards">
-          <span class="sb-award">软件著作权 × 2</span>
-          <span class="sb-award">国家励志奖学金</span>
-          <span class="sb-award">省三好学生</span>
-          <span class="sb-award">优秀共青团员</span>
-          <span class="sb-award">普通话证书</span>
+          <span class="sb-award">计算机二级</span>
+          <span class="sb-award">软件著作权 × 2（申请中）</span>
+          <span class="sb-award">蓝桥杯 · 省三等奖</span>
+          <span class="sb-award">非遗设计比赛 · 小组一等奖</span>
+          <span class="sb-award">商务数据分析大赛 · 小组二等奖</span>
+          <span class="sb-award">精英选拔赛 · 二等奖</span>
         </div>
       </div>
 
@@ -321,7 +301,7 @@ body{
 
       <div class="main-header">
         <h1>郑传荣</h1>
-        <div class="sub">全栈开发工程师 · 计算机应用技术</div>
+        <div class="sub">软件开发工程师 · 厦门工学院</div>
         <a class="github" href="https://github.com/dghc2023" target="_blank">github.com/dghc2023</a>
       </div>
 
@@ -333,9 +313,9 @@ body{
           <span class="line"></span>
         </div>
         <div class="about-text">
-          计算机应用技术专业在读，具备前后端全栈开发能力。熟悉 Vue3、SpringBoot 等主流框架，
-          有丰富的 AI 应用落地经验，善于使用 Dify 搭建智能工作流、对接大模型 API。
-          热衷于用技术解决实际问题，具备良好的团队协作与项目推动能力。
+          软件工程专业本科在读，具备前后端全栈开发与 AI 应用落地经验。
+          熟悉 Vue3、SpringBoot 等主流框架，擅长 Python 自动化处理与 Dify 智能工作流搭建。
+          有多个校企合作项目实战经历，善于将技术方案转化为实际产品。
         </div>
       </div>
 
@@ -349,62 +329,87 @@ body{
 
         <div class="proj">
           <div class="proj-head">
-            <h3>学院档案管理系统</h3>
+            <h3>学院考勤系统</h3>
             <span class="date">2024.06 - 2024.12</span>
           </div>
-          <div class="role">全栈开发 · Python</div>
-          <p>
-            使用 Python 自动化处理全院学位档案文件，实现对批量文档的自动归类、提取与整理，
-            并打包为 exe 可执行程序方便非技术人员使用。将原本需要 3-4 小时的人工处理缩短至分钟级。
-          </p>
+          <div class="role">前后端开发 · 同学委会学习心理部合作</div>
+          <p>使用 Python 对全学院学位考勤文件进行自动化整理与处理，打包为 exe 可执行程序，节省人工时间 3-4 小时。</p>
           <div class="proj-tags">
-            <span>Python</span><span>EXE打包</span><span>自动化</span>
+            <span>Python</span><span>EXE打包</span><span>自动化办公</span>
           </div>
         </div>
 
         <div class="proj">
           <div class="proj-head">
-            <h3>学瞳 AI · 信息摄取与智能对话系统</h3>
+            <h3>智瞳 AI · 舆情分析系统</h3>
             <span class="date">2024.07 - 2025.01</span>
           </div>
-          <div class="role">AI 开发 · Dify / Python</div>
-          <p>
-            使用 Python 批量处理学生信息数据，基于 Dify 搭建 AI 工作流实现多轮对话与智能判断。
-            负责 Dify API 对接与调试，对 AI 对话回复格式进行微调，结合 RAG 实现知识库精准检索。
-            与学院辅导员、校领导、校外导师等多方协作完成项目交付。
-          </p>
+          <div class="role">AI 开发 · 同湖南永州网信办、校内外老师合作</div>
+          <p>使用 Python 爬虫获取并处理大量数据，搭建 Dify 工作流实现对舆情的智能判断与分析。</p>
           <div class="proj-tags">
-            <span>Python</span><span>Dify</span><span>RAG</span><span>API</span><span>LangChain</span>
+            <span>Python</span><span>爬虫</span><span>Dify</span><span>工作流</span>
           </div>
         </div>
 
         <div class="proj">
           <div class="proj-head">
-            <h3>浏览器自动化识别系统</h3>
+            <h3>AI 心理诊疗系统</h3>
+            <span class="date">2024.07 - 2025.01</span>
+          </div>
+          <div class="role">AI 开发 · 同怡心园等老师合作</div>
+          <p>对接 AI 接口，对 AI 回复格式与内容进行微调，实现 AI 对个人信息的加密保护。
+            搭建 AI 心理 OH 卡功能，结合 Dify + RAG 实现梦境解析。</p>
+          <div class="proj-tags">
+            <span>Python</span><span>Dify</span><span>RAG</span><span>API</span>
+          </div>
+        </div>
+
+        <div class="proj">
+          <div class="proj-head">
+            <h3>赛车速度识别系统</h3>
             <span class="date">2024.09 - 2025.03</span>
           </div>
-          <div class="role">全栈开发 · Python</div>
-          <p>
-            实现自动对浏览器视频播放速度的精准识别与数据对比分析。同时基于 Python + 浏览器自动化方案，
-            开发谷歌账号信息自动修改工具，实现账号数据的批量处理与自动操作。
-          </p>
+          <div class="role">前后端开发 · 项目制（单子）</div>
+          <p>实现自动化对赛车视频中的速度值进行精准识别，并生成折线图进行数据对比分析。</p>
           <div class="proj-tags">
-            <span>Python</span><span>浏览器自动化</span><span>数据采集</span>
+            <span>Python</span><span>OpenCV</span><span>数据可视化</span>
           </div>
         </div>
 
         <div class="proj">
           <div class="proj-head">
-            <h3>AI 内容安全审核系统</h3>
-            <span class="date">2025.01 - 2025.09</span>
+            <h3>谷歌账号批量管理系统</h3>
+            <span class="date">2024.01 - 2024.05</span>
           </div>
-          <div class="role">前后端开发 · LLM API</div>
-          <p>
-            基于大模型 API 实现图像内容精准识别与安全审核，结合知识库实现智能内容推荐与科普。
-            使用 Sealos 容器实现公网部署，前后端独立开发完成。
-          </p>
+          <div class="role">开发 · 项目制（单子）</div>
+          <p>采用 Python + 并发方式，批量自动化实现对谷歌账号信息的修改与管理。</p>
           <div class="proj-tags">
-            <span>Python</span><span>LLM API</span><span>RAG</span><span>Sealos</span><span>Docker</span>
+            <span>Python</span><span>并发</span><span>自动化</span>
+          </div>
+        </div>
+
+        <div class="proj">
+          <div class="proj-head">
+            <h3>AI 试衣系统</h3>
+            <span class="date">2025.01 - 2025.06</span>
+          </div>
+          <div class="role">前后端搭建 + API 调用 · 同重庆立泰服饰集团等合作</div>
+          <p>实现 AI 换衣功能及原型图搭建。已申请软件著作权，同 6 家企业签订合作意向书。</p>
+          <div class="proj-tags">
+            <span>Python</span><span>AI API</span><span>原型设计</span>
+          </div>
+        </div>
+
+        <div class="proj">
+          <div class="proj-head">
+            <h3>AI 舌诊系统</h3>
+            <span class="date">2025.06 - 2025.09</span>
+          </div>
+          <div class="role">前后端开发 · 同福建商学院团队合作</div>
+          <p>使用舌诊 API 实现对舌头图片的精准分析，结合知识库推荐营养餐。
+            使用 Sealos 部署程序实现公网访问。已申请软件著作权。</p>
+          <div class="proj-tags">
+            <span>Python</span><span>API</span><span>RAG</span><span>Sealos</span><span>Docker</span>
           </div>
         </div>
 
@@ -419,10 +424,10 @@ body{
         </div>
         <div class="edu-item">
           <div>
-            <h3>计算机应用技术</h3>
-            <div class="meta">郑州信息工程职业学院 · 大专</div>
+            <h3>软件工程</h3>
+            <div class="meta">厦门工学院 · 本科</div>
           </div>
-          <span class="date">2023.09 - 2027.07</span>
+          <span class="date">2023.09 - 2027.09</span>
         </div>
       </div>
 
@@ -434,8 +439,9 @@ body{
           <span class="line"></span>
         </div>
         <div class="about-text">
-          计算机协会成员、AI 研习社成员；担任班级副班长/班长、学生会学习部干事。
-          参与并组织学校教师节、元旦节等活动的后勤安排；参加校园车站志愿服务，累计志愿时长 70+ 小时。
+          参加社团：计算机协会、AI 坊（核心成员）、华为坊、传习会（副会长）、友敏学委会（副部长）。<br>
+          参与并组织学校尊师节、上巳节等活动的后勤安排；参与校内外车站等志愿服务，累计志愿时长 70+ 小时。<br>
+          课设独立编写 C 语言 / Java / Node / SpringBoot 等课程设计，并指导小组成员完成报告。
         </div>
       </div>
 
@@ -443,12 +449,7 @@ body{
   </div>
 
   <footer class="footer">
-    <p>
-      &copy; 2026 郑传荣 &nbsp;·&nbsp;
-      <a href="https://github.com/dghc2023" target="_blank" style="color:var(--blue);text-decoration:none">GitHub</a>
-      &nbsp;·&nbsp; 在线简历 &nbsp;·&nbsp;
-      <a href="#" onclick="window.print()" style="color:var(--blue);text-decoration:none">导出 PDF</a>
-    </p>
+    <p>&copy; 2026 郑传荣 · <a href="https://github.com/dghc2023" target="_blank">GitHub</a> · 在线简历 · <a href="#" onclick="window.print()">导出 PDF</a></p>
   </footer>
 </div>
 
