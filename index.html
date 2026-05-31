@@ -1,415 +1,426 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>郑传荣 - 个人简历</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>郑传荣 · 简历</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:#c89b6440 transparent}
 
-        :root {
-            --primary: #2563eb;
-            --primary-light: #3b82f6;
-            --bg: #f8fafc;
-            --card-bg: #ffffff;
-            --text: #1e293b;
-            --text-secondary: #64748b;
-            --border: #e2e8f0;
-            --shadow: 0 4px 24px rgba(0,0,0,0.06);
-            --radius: 16px;
-        }
+:root{
+  --bg:#0b0a0c;
+  --surface:#141316;
+  --surface-hover:#1c1b1e;
+  --accent:#c89b64;
+  --accent-dim:#8a734a;
+  --accent-glow:rgba(200,155,100,0.12);
+  --text:#ece8e2;
+  --text-secondary:#8a8680;
+  --border:rgba(200,155,100,0.12);
+  --radius:20px;
+  --font-serif:'Playfair Display',Georgia,serif;
+  --font-sans:'Outfit','Segoe UI',sans-serif;
+}
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            min-height: 100vh;
-        }
+body{
+  font-family:var(--font-sans);
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
 
-        .container {
-            max-width: 860px;
-            margin: 0 auto;
-            padding: 40px 24px;
-        }
+/* ─── noise overlay ─── */
+body::before{
+  content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  background-repeat:repeat;background-size:256px 256px;
+  pointer-events:none;z-index:9999;
+}
 
-        /* Header */
-        .header {
-            background: linear-gradient(135deg, var(--primary), #1d4ed8);
-            color: white;
-            border-radius: var(--radius);
-            padding: 48px 40px;
-            margin-bottom: 28px;
-            position: relative;
-            overflow: hidden;
-        }
+/* ─── scrollbar ─── */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--accent-dim);border-radius:3px}
 
-        .header::before {
-            content: '';
-            position: absolute;
-            top: -60%;
-            right: -20%;
-            width: 400px;
-            height: 400px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 50%;
-        }
+/* ─── container ─── */
+.container{max-width:920px;margin:0 auto;padding:0 28px}
 
-        .header::after {
-            content: '';
-            position: absolute;
-            bottom: -30%;
-            left: 30%;
-            width: 300px;
-            height: 300px;
-            background: rgba(255,255,255,0.04);
-            border-radius: 50%;
-        }
+/* ─── hero ─── */
+.hero{
+  min-height:100vh;display:flex;flex-direction:column;justify-content:center;
+  padding:120px 0 80px;position:relative;
+}
+.hero::after{
+  content:'';position:absolute;bottom:0;left:10%;right:10%;
+  height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent);
+}
 
-        .header h1 {
-            font-size: 36px;
-            font-weight: 700;
-            position: relative;
-            z-index: 1;
-        }
+.hero-label{
+  font-size:13px;letter-spacing:4px;text-transform:uppercase;
+  color:var(--accent);margin-bottom:24px;font-weight:500;
+}
 
-        .header .title {
-            font-size: 18px;
-            opacity: 0.9;
-            margin-top: 4px;
-            position: relative;
-            z-index: 1;
-        }
+.hero h1{
+  font-family:var(--font-serif);font-size:clamp(56px,9vw,120px);
+  font-weight:700;line-height:0.95;letter-spacing:-3px;
+  margin-bottom:16px;
+}
+.hero h1 .accent{color:var(--accent);font-style:italic}
 
-        .header .contact {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px 28px;
-            margin-top: 20px;
-            position: relative;
-            z-index: 1;
-        }
+.hero-sub{
+  font-size:clamp(18px,2.2vw,24px);color:var(--text-secondary);
+  max-width:560px;margin-bottom:40px;font-weight:300;line-height:1.5;
+}
 
-        .header .contact a {
-            color: white;
-            text-decoration: none;
-            font-size: 14px;
-            opacity: 0.85;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: opacity 0.2s;
-        }
+/* ─── contact bar ─── */
+.contact-bar{
+  display:flex;flex-wrap:wrap;gap:12px;
+}
+.contact-bar a,.contact-bar span{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:10px 20px;border-radius:100px;
+  border:1px solid var(--border);
+  color:var(--text-secondary);text-decoration:none;
+  font-size:14px;font-weight:400;
+  transition:all .3s ease;cursor:default;
+}
+.contact-bar a{cursor:pointer}
+.contact-bar a:hover{
+  border-color:var(--accent);color:var(--accent);
+  background:var(--accent-glow);transform:translateY(-2px);
+}
+.contact-bar svg{width:16px;height:16px;flex-shrink:0}
 
-        .header .contact a:hover { opacity: 1; }
+/* ─── section ─── */
+.section{margin-bottom:80px}
+.section-header{
+  display:flex;align-items:center;gap:16px;margin-bottom:40px;
+}
+.section-number{
+  font-family:var(--font-serif);font-size:14px;color:var(--accent);
+  font-style:italic;font-weight:500;
+}
+.section-line{
+  flex:1;height:1px;
+  background:linear-gradient(90deg,var(--border),transparent);
+}
+.section-title{
+  font-family:var(--font-serif);font-size:28px;font-weight:700;
+  letter-spacing:-0.5px;
+}
 
-        .header .contact .icon {
-            width: 18px;
-            height: 18px;
-            flex-shrink: 0;
-        }
+/* ─── about ─── */
+.about-text{
+  font-size:17px;color:var(--text-secondary);line-height:1.8;
+  max-width:720px;font-weight:300;
+}
+.about-text strong{color:var(--text);font-weight:500}
 
-        /* Section */
-        .section {
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            padding: 32px 40px;
-            margin-bottom: 20px;
-            box-shadow: var(--shadow);
-        }
+/* ─── skills ─── */
+.skills-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));
+  gap:12px;
+}
+.skill-item{
+  padding:14px 18px;border-radius:12px;
+  background:var(--surface);border:1px solid var(--border);
+  text-align:center;font-size:14px;font-weight:500;
+  transition:all .35s cubic-bezier(.22,1,.36,1);cursor:default;
+}
+.skill-item:hover{
+  border-color:var(--accent);background:var(--accent-glow);
+  transform:translateY(-4px);color:var(--accent);
+  box-shadow:0 8px 32px rgba(200,155,100,0.1);
+}
 
-        .section-title {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+/* ─── projects ─── */
+.project-card{
+  background:var(--surface);border-radius:var(--radius);
+  border:1px solid var(--border);padding:32px 36px;margin-bottom:20px;
+  transition:all .5s cubic-bezier(.22,1,.36,1);
+  position:relative;overflow:hidden;
+}
+.project-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--accent),transparent);
+  opacity:0;transition:opacity .5s ease;
+}
+.project-card:hover::before{opacity:1}
+.project-card:hover{
+  border-color:var(--accent-dim);transform:translateY(-4px);
+  box-shadow:0 20px 60px rgba(0,0,0,0.3);
+}
+.project-card:last-child{margin-bottom:0}
 
-        .section-title .badge {
-            font-size: 12px;
-            background: var(--primary);
-            color: white;
-            padding: 2px 10px;
-            border-radius: 20px;
-            font-weight: 500;
-        }
+.project-card .num{
+  font-family:var(--font-serif);font-size:13px;color:var(--accent-dim);
+  margin-bottom:8px;font-style:italic;
+}
+.project-card h3{
+  font-family:var(--font-serif);font-size:22px;font-weight:700;
+  margin-bottom:4px;
+}
+.project-card .sub{
+  font-size:13px;color:var(--accent);margin-bottom:14px;font-weight:500;
+  letter-spacing:0.3px;
+}
+.project-card p{
+  font-size:15px;color:var(--text-secondary);
+  line-height:1.7;font-weight:300;
+}
+.project-tags{
+  display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;
+}
+.project-tags span{
+  font-size:12px;padding:4px 12px;border-radius:6px;
+  background:rgba(200,155,100,0.08);color:var(--accent-dim);
+  border:1px solid rgba(200,155,100,0.1);font-weight:500;
+}
 
-        /* Skills */
-        .skills-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
+/* ─── footer ─── */
+footer{
+  text-align:center;padding:60px 0 40px;
+  border-top:1px solid var(--border);
+}
+footer p{font-size:13px;color:var(--text-secondary)}
+footer a{color:var(--accent);text-decoration:none}
+footer a:hover{text-decoration:underline}
+footer .heart{color:#c89b64}
 
-        .skill-tag {
-            background: #eff6ff;
-            color: var(--primary);
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 500;
-            transition: all 0.2s;
-        }
+/* ─── reveal animation ─── */
+.reveal{opacity:0;transform:translateY(30px);transition:all .8s cubic-bezier(.22,1,.36,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+.reveal-delay-4{transition-delay:.4s}
+.reveal-delay-5{transition-delay:.5s}
 
-        .skill-tag:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-1px);
-        }
+/* ─── hero stagger ─── */
+.hero-stagger{opacity:0;transform:translateY(24px);animation:heroFadeIn .8s cubic-bezier(.22,1,.36,1) forwards}
+.hero-stagger:nth-child(1){animation-delay:.2s}
+.hero-stagger:nth-child(2){animation-delay:.4s}
+.hero-stagger:nth-child(3){animation-delay:.6s}
+.hero-stagger:nth-child(4){animation-delay:.8s}
 
-        /* Projects */
-        .project {
-            padding: 20px 0;
-            border-bottom: 1px solid var(--border);
-        }
+@keyframes heroFadeIn{to{opacity:1;transform:translateY(0)}}
 
-        .project:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
+/* ─── floating particles ─── */
+.particles{position:fixed;inset:0;pointer-events:none;z-index:0}
+.particle{
+  position:absolute;width:3px;height:3px;
+  background:var(--accent);border-radius:50%;
+  opacity:0;animation:particleFade 12s infinite;
+}
+@keyframes particleFade{
+  0%{opacity:0;transform:translateY(100vh) scale(0)}
+  20%{opacity:0.4}
+  80%{opacity:0.4}
+  100%{opacity:0;transform:translateY(-10vh) scale(1)}
+}
+.particle:nth-child(1){left:15%;animation-delay:0s;animation-duration:14s}
+.particle:nth-child(2){left:35%;animation-delay:2s;animation-duration:11s;width:2px;height:2px}
+.particle:nth-child(3){left:55%;animation-delay:5s;animation-duration:16s}
+.particle:nth-child(4){left:75%;animation-delay:1s;animation-duration:13s;width:2px;height:2px}
+.particle:nth-child(5){left:90%;animation-delay:4s;animation-duration:15s}
+.particle:nth-child(6){left:45%;animation-delay:7s;animation-duration:12s}
+.particle:nth-child(7){left:25%;animation-delay:3s;animation-duration:18s}
+.particle:nth-child(8){left:65%;animation-delay:6s;animation-duration:10s;width:2px;height:2px}
 
-        .project:first-child { padding-top: 0; }
+/* ─── responsive ─── */
+@media(max-width:640px){
+  .container{padding:0 20px}
+  .hero{padding:100px 0 60px;min-height:auto}
+  .hero h1{font-size:52px;letter-spacing:-1.5px}
+  .hero-sub{font-size:17px}
+  .contact-bar{gap:8px}
+  .contact-bar a,.contact-bar span{padding:8px 14px;font-size:13px}
+  .section-title{font-size:24px}
+  .project-card{padding:24px}
+  .project-card h3{font-size:19px}
+  .skills-grid{grid-template-columns:repeat(auto-fill,minmax(100px,1fr))}
+}
 
-        .project-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 8px;
-        }
-
-        .project-name {
-            font-size: 17px;
-            font-weight: 600;
-        }
-
-        .project-name a {
-            color: var(--primary);
-            text-decoration: none;
-        }
-
-        .project-name a:hover { text-decoration: underline; }
-
-        .project-date {
-            font-size: 13px;
-            color: var(--text-secondary);
-            white-space: nowrap;
-        }
-
-        .project-desc {
-            font-size: 14px;
-            color: var(--text-secondary);
-            line-height: 1.7;
-        }
-
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-top: 10px;
-        }
-
-        .project-tag {
-            font-size: 12px;
-            background: #f1f5f9;
-            color: var(--text-secondary);
-            padding: 2px 10px;
-            border-radius: 4px;
-        }
-
-        /* Timeline */
-        .timeline-item {
-            display: flex;
-            gap: 16px;
-            padding: 16px 0;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .timeline-item:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-
-        .timeline-dot {
-            width: 10px;
-            height: 10px;
-            background: var(--primary);
-            border-radius: 50%;
-            margin-top: 7px;
-            flex-shrink: 0;
-        }
-
-        .timeline-content h3 {
-            font-size: 16px;
-            font-weight: 600;
-        }
-
-        .timeline-content .meta {
-            font-size: 13px;
-            color: var(--text-secondary);
-            margin-top: 2px;
-        }
-
-        .timeline-content p {
-            font-size: 14px;
-            color: var(--text-secondary);
-            margin-top: 6px;
-        }
-
-        /* Footer */
-        .footer {
-            text-align: center;
-            padding: 16px;
-            font-size: 13px;
-            color: var(--text-secondary);
-        }
-
-        /* Print */
-        @media print {
-            body { background: white; }
-            .header { border-radius: 0; }
-            .section { box-shadow: none; border: 1px solid var(--border); }
-        }
-
-        @media (max-width: 600px) {
-            .container { padding: 16px; }
-            .header { padding: 32px 24px; }
-            .header h1 { font-size: 28px; }
-            .section { padding: 24px 20px; }
-        }
-
-        /* Edit hint */
-        .edit-hint {
-            background: #fffbeb;
-            border: 1px solid #fde68a;
-            border-radius: 12px;
-            padding: 12px 20px;
-            margin-bottom: 20px;
-            font-size: 13px;
-            color: #92400e;
-        }
-    </style>
+@media(max-width:480px){
+  .hero h1{font-size:40px}
+  .contact-bar a,.contact-bar span{width:100%;justify-content:center}
+}
+</style>
 </head>
 <body>
-    <div class="container">
-        <!-- 编辑提示 -->
-        <div class="edit-hint">
-            ✏️ 此页面是模板，你可以直接编辑 <code>index.html</code> 替换为你的真实信息。
-        </div>
 
-        <!-- Header -->
-        <header class="header">
-            <h1>郑传荣</h1>
-            <div class="title">全栈开发者 / 计算机科学与技术</div>
-            <div class="contact">
-                <a href="tel:138XXXXXXXX">
-                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                    138XXXXXXXX
-                </a>
-                <a href="mailto:your@email.com">
-                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                    your@email.com
-                </a>
-                <a href="https://github.com/dghc2023" target="_blank">
-                    <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-                    github.com/dghc2023
-                </a>
-                <span>
-                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                    所在地
-                </span>
-            </div>
-        </header>
+<div class="particles" aria-hidden="true">
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+</div>
 
-        <!-- 技能 -->
-        <section class="section">
-            <div class="section-title">
-                🛠️ 技术栈
-                <span class="badge">Skills</span>
-            </div>
-            <div class="skills-grid">
-                <span class="skill-tag">Python</span>
-                <span class="skill-tag">JavaScript</span>
-                <span class="skill-tag">TypeScript</span>
-                <span class="skill-tag">Vue.js</span>
-                <span class="skill-tag">React</span>
-                <span class="skill-tag">Node.js</span>
-                <span class="skill-tag">Django</span>
-                <span class="skill-tag">FastAPI</span>
-                <span class="skill-tag">MySQL</span>
-                <span class="skill-tag">PostgreSQL</span>
-                <span class="skill-tag">Docker</span>
-                <span class="skill-tag">Git</span>
-                <span class="skill-tag">Linux</span>
-                <span class="skill-tag">REST API</span>
-            </div>
-        </section>
-
-        <!-- 项目经历 -->
-        <section class="section">
-            <div class="section-title">
-                📂 项目经历
-                <span class="badge">Projects</span>
-            </div>
-
-            <div class="project">
-                <div class="project-header">
-                    <div class="project-name">
-                        <a href="https://github.com/dghc2023" target="_blank">项目名称一</a>
-                    </div>
-                    <div class="project-date">2025.09 - 2025.12</div>
-                </div>
-                <div class="project-desc">
-                    简要描述项目的背景、你的职责和核心成果。例如：基于 Vue3 + Django 开发了一个某某平台，实现了某某功能，解决了某某问题。
-                </div>
-                <div class="project-tags">
-                    <span class="project-tag">Vue3</span>
-                    <span class="project-tag">Django</span>
-                    <span class="project-tag">MySQL</span>
-                </div>
-            </div>
-
-            <div class="project">
-                <div class="project-header">
-                    <div class="project-name">
-                        <a href="https://github.com/dghc2023" target="_blank">项目名称二</a>
-                    </div>
-                    <div class="project-date">2025.03 - 2025.06</div>
-                </div>
-                <div class="project-desc">
-                    简要描述项目的背景、你的职责和核心成果。突出使用的技术和解决的问题，让看简历的人快速了解你的能力。
-                </div>
-                <div class="project-tags">
-                    <span class="project-tag">React</span>
-                    <span class="project-tag">FastAPI</span>
-                    <span class="project-tag">PostgreSQL</span>
-                </div>
-            </div>
-
-            <div class="project">
-                <div class="project-header">
-                    <div class="project-name">
-                        <a href="https://github.com/dghc2023" target="_blank">项目名称三</a>
-                    </div>
-                    <div class="project-date">2024.10 - 2025.01</div>
-                </div>
-                <div class="project-desc">
-                    简要描述项目的背景、你的职责和核心成果。建议用数据量化成果，如"提升了 30% 的性能"或"服务了 1000+ 用户"。
-                </div>
-                <div class="project-tags">
-                    <span class="project-tag">Python</span>
-                    <span class="project-tag">Docker</span>
-                    <span class="project-tag">Linux</span>
-                </div>
-            </div>
-        </section>
-
-        <div class="footer">
-            © 2026 郑传荣 · 用 ❤️ 打造 · <a href="https://github.com/dghc2023" style="color: var(--primary); text-decoration: none;">GitHub</a>
-        </div>
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-stagger">
+      <div class="hero-label">Portfolio &middot; 2026</div>
     </div>
+    <div class="hero-stagger">
+      <h1>
+        郑传<br>
+        <span class="accent">荣</span>
+      </h1>
+    </div>
+    <div class="hero-stagger">
+      <p class="hero-sub">
+        全栈开发者，专注于构建有温度的<br class="mobile-break">数字产品与高效系统。
+      </p>
+    </div>
+    <div class="hero-stagger">
+      <div class="contact-bar">
+        <a href="mailto:zhengcr@example.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          zhengcr@example.com
+        </a>
+        <a href="https://github.com/dghc2023" target="_blank">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          dghc2023
+        </a>
+        <span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          中国 · 杭州
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ABOUT ═══ -->
+<section class="section container">
+  <div class="section-header reveal">
+    <span class="section-number">01</span>
+    <span class="section-line"></span>
+    <h2 class="section-title">关于我</h2>
+  </div>
+  <div class="about-text reveal reveal-delay-1">
+    <p>
+      计算机科学与技术专业出身，<strong>3 年全栈开发经验</strong>。
+      从后端 API 到前端交互，再到部署运维，习惯全链路思考。
+      相信好的代码不只是能跑——还要<strong>易读、可维护、有温度</strong>。
+    </p>
+    <br>
+    <p>
+      工作之余喜欢折腾开源项目、研究 AI 应用落地，
+      也爱摄影和骑行。编程于我，既是职业，也是表达方式。
+    </p>
+  </div>
+</section>
+
+<!-- ═══ SKILLS ═══ -->
+<section class="section container">
+  <div class="section-header reveal">
+    <span class="section-number">02</span>
+    <span class="section-line"></span>
+    <h2 class="section-title">技术栈</h2>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-item reveal reveal-delay-0">Python</div>
+    <div class="skill-item reveal reveal-delay-1">JavaScript</div>
+    <div class="skill-item reveal reveal-delay-2">TypeScript</div>
+    <div class="skill-item reveal reveal-delay-3">Vue.js</div>
+    <div class="skill-item reveal reveal-delay-4">React</div>
+    <div class="skill-item reveal reveal-delay-5">Node.js</div>
+    <div class="skill-item reveal reveal-delay-0">Django</div>
+    <div class="skill-item reveal reveal-delay-1">FastAPI</div>
+    <div class="skill-item reveal reveal-delay-2">MySQL</div>
+    <div class="skill-item reveal reveal-delay-3">PostgreSQL</div>
+    <div class="skill-item reveal reveal-delay-4">Docker</div>
+    <div class="skill-item reveal reveal-delay-5">Git</div>
+    <div class="skill-item reveal reveal-delay-0">Linux</div>
+    <div class="skill-item reveal reveal-delay-1">REST API</div>
+    <div class="skill-item reveal reveal-delay-2">WebSocket</div>
+    <div class="skill-item reveal reveal-delay-3">Redis</div>
+  </div>
+</section>
+
+<!-- ═══ PROJECTS ═══ -->
+<section class="section container">
+  <div class="section-header reveal">
+    <span class="section-number">03</span>
+    <span class="section-line"></span>
+    <h2 class="section-title">项目经历</h2>
+  </div>
+
+  <div class="project-card reveal reveal-delay-1">
+    <div class="num">001</div>
+    <h3>智荐 · 个性化推荐引擎</h3>
+    <div class="sub">深度学习 · 推荐系统</div>
+    <p>
+      基于协同过滤与内容理解搭建的个性化推荐系统。支持多路召回、实时特征计算与 A/B 实验。
+      上线后用户点击率提升 35%，日活突破 5000，服务端平均响应时间控制在 80ms 以内。
+    </p>
+    <div class="project-tags">
+      <span>Python</span><span>TensorFlow</span><span>FastAPI</span>
+      <span>PostgreSQL</span><span>Redis</span><span>Docker</span>
+    </div>
+  </div>
+
+  <div class="project-card reveal reveal-delay-2">
+    <div class="num">002</div>
+    <h3>启航 · 全栈电商管理平台</h3>
+    <div class="sub">前后端分离 · 微服务架构</div>
+    <p>
+      面向中小商家的 B2B 电商管理系统，涵盖商品管理、订单流转、库存预警与数据看板。
+      采用前后端分离架构，支持 10 万+ 商品 SKU 的场景下订单处理效率提升 60%。
+    </p>
+    <div class="project-tags">
+      <span>Vue3</span><span>TypeScript</span><span>Django</span>
+      <span>MySQL</span><span>Redis</span><span>Docker</span>
+    </div>
+  </div>
+
+  <div class="project-card reveal reveal-delay-3">
+    <div class="num">003</div>
+    <h3>观澜 · 实时数据分析平台</h3>
+    <div class="sub">数据可视化 · WebSocket</div>
+    <p>
+      面向运营团队的多维度实时数据看板，支持自定义指标配置、毫秒级数据推送与交互式下钻分析。
+      基于 React + D3.js + WebSocket 实现流畅的大屏数据展示体验，日处理 200 万+ 事件数据。
+    </p>
+    <div class="project-tags">
+      <span>React</span><span>D3.js</span><span>Node.js</span>
+      <span>WebSocket</span><span>PostgreSQL</span><span>Nginx</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <p>
+    &copy; 2026 郑传荣 &nbsp;·&nbsp;
+    <span class="heart">&hearts;</span> Built with care &nbsp;·&nbsp;
+    <a href="https://github.com/dghc2023" target="_blank">GitHub</a>
+  </p>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
 </body>
 </html>
