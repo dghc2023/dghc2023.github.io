@@ -37,6 +37,24 @@ body{
   max-width:900px;margin:32px auto;padding:0 16px;
 }
 
+/* ─── print button ─── */
+.print-bar{
+  display:flex;justify-content:flex-end;margin-bottom:12px;
+}
+.print-btn{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:8px 18px;border-radius:8px;
+  background:var(--surface);border:1px solid var(--border);
+  color:var(--text-secondary);font-size:13px;
+  font-family:inherit;cursor:pointer;
+  transition:all .2s;box-shadow:var(--shadow);
+}
+.print-btn:hover{
+  border-color:var(--blue);color:var(--blue);
+  box-shadow:0 2px 12px rgba(37,99,235,0.1);
+}
+.print-btn svg{width:15px;height:15px}
+
 /* ─── resume two-column ─── */
 .resume{
   background:var(--surface);border-radius:16px;
@@ -49,23 +67,18 @@ body{
 .sidebar{
   background:var(--sidebar);padding:36px 28px;
   border-right:1px solid var(--border);
-  display:flex;flex-direction:column;gap:24px;
+  display:flex;flex-direction:column;gap:20px;
 }
 
 /* avatar */
-.avatar-wrap{
-  text-align:center;
-}
+.avatar-wrap{text-align:center}
 .avatar{
   width:120px;height:120px;border-radius:50%;
   background:var(--blue-light);
-  margin:0 auto 12px;
-  display:flex;align-items:center;justify-content:center;
-  overflow:hidden;
+  margin:0 auto 12px;overflow:hidden;
   border:3px solid var(--surface);
   box-shadow:0 2px 12px rgba(37,99,235,0.12);
 }
-.avatar svg{width:56px;height:56px;color:var(--blue);opacity:0.6;}
 .avatar img{width:100%;height:100%;object-fit:cover}
 
 .sidebar-name h1{
@@ -78,23 +91,22 @@ body{
 }
 
 /* sidebar section */
-.sb-section{margin-top:4px}
 .sb-section h3{
   font-size:11px;text-transform:uppercase;
   letter-spacing:1.5px;color:var(--text-muted);
-  margin-bottom:10px;font-weight:600;
+  margin-bottom:8px;font-weight:600;
 }
 
 /* contact */
-.sb-contact{display:flex;flex-direction:column;gap:8px}
+.sb-contact{display:flex;flex-direction:column;gap:7px}
 .sb-contact a,.sb-contact .sb-contact-item{
-  display:flex;align-items:center;gap:10px;
+  display:flex;align-items:center;gap:8px;
   font-size:12px;color:var(--text-secondary);text-decoration:none;
   line-height:1.3;transition:color .15s;
 }
 .sb-contact a:hover{color:var(--blue)}
 .sb-contact svg{
-  width:14px;height:14px;flex-shrink:0;
+  width:13px;height:13px;flex-shrink:0;
   color:var(--blue);opacity:0.7;
 }
 
@@ -103,51 +115,55 @@ body{
 .sb-skill{
   font-size:11px;padding:3px 10px;border-radius:4px;
   background:var(--blue-light);color:var(--blue-dark);
-  font-weight:500;letter-spacing:0.2px;
+  font-weight:500;
 }
 
-/* interests */
-.sb-interests{display:flex;flex-wrap:wrap;gap:6px}
-.sb-interest{
-  font-size:11px;color:var(--text-muted);
-  padding:3px 0;
+/* awards */
+.sb-awards{display:flex;flex-direction:column;gap:5px}
+.sb-award{
+  font-size:11px;color:var(--text-secondary);
+  padding-left:10px;position:relative;line-height:1.4;
+}
+.sb-award::before{
+  content:'';position:absolute;left:0;top:6px;
+  width:4px;height:4px;border-radius:50%;background:var(--blue);opacity:0.5;
 }
 
-.divider{height:1px;background:var(--border);margin:4px 0}
+.divider{height:1px;background:var(--border);margin:2px 0}
 
 /* ═══ MAIN ═══ */
-.main{padding:36px 40px;display:flex;flex-direction:column;gap:0}
+.main{padding:32px 36px;display:flex;flex-direction:column;gap:0}
 
-/* main header */
 .main-header{
-  margin-bottom:16px;padding-bottom:16px;
+  margin-bottom:14px;padding-bottom:14px;
   border-bottom:2px solid var(--blue);
 }
 .main-header h1{
-  font-size:28px;font-weight:700;color:var(--text);
+  font-size:26px;font-weight:700;color:var(--text);
   letter-spacing:-0.3px;
 }
 .main-header .sub{
-  font-size:14px;color:var(--text-secondary);margin-top:2px;
+  font-size:13px;color:var(--text-secondary);margin-top:2px;
   font-weight:400;
 }
 .main-header .github{
-  display:inline-block;margin-top:6px;
+  display:inline-block;margin-top:4px;
   font-size:12px;color:var(--blue);text-decoration:none;
   font-weight:500;
 }
 .main-header .github:hover{text-decoration:underline}
 
 /* sections */
-.sec{margin-bottom:20px}
+.sec{margin-bottom:16px}
+.sec:last-child{margin-bottom:0}
 .sec-head{
-  display:flex;align-items:center;gap:10px;margin-bottom:10px;
+  display:flex;align-items:center;gap:10px;margin-bottom:8px;
 }
 .sec-head .dot{
   width:6px;height:6px;border-radius:50%;background:var(--blue);flex-shrink:0;
 }
 .sec-head h2{
-  font-size:15px;font-weight:600;color:var(--text);
+  font-size:14px;font-weight:600;color:var(--text);
   letter-spacing:0.3px;
 }
 .sec-head .line{
@@ -155,71 +171,81 @@ body{
 }
 
 /* about */
-.about-text{font-size:13px;color:var(--text-secondary);line-height:1.7;}
+.about-text{font-size:12px;color:var(--text-secondary);line-height:1.7;}
 
 /* project */
-.proj{padding:14px 0 12px}
+.proj{padding:12px 0 10px}
 .proj+.proj{border-top:1px solid var(--border)}
 .proj-head{
   display:flex;justify-content:space-between;align-items:baseline;
-  flex-wrap:wrap;gap:4px;margin-bottom:2px;
+  flex-wrap:wrap;gap:4px;margin-bottom:1px;
 }
-.proj-head h3{font-size:14px;font-weight:600;color:var(--text)}
+.proj-head h3{font-size:13px;font-weight:600;color:var(--text)}
 .proj-head .date{font-size:11px;color:var(--text-muted);white-space:nowrap}
-.proj .role{font-size:12px;color:var(--blue);font-weight:500;margin-bottom:3px}
+.proj .role{font-size:11px;color:var(--blue);font-weight:500;margin-bottom:2px}
 .proj p{font-size:12px;color:var(--text-secondary);line-height:1.6;}
-.proj-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+.proj-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:5px}
 .proj-tags span{
-  font-size:10px;padding:2px 8px;border-radius:3px;
+  font-size:10px;padding:2px 7px;border-radius:3px;
   background:#f1f5f9;color:var(--text-secondary);
   font-weight:500;
 }
 
 /* education */
-.edu-item{
-  display:flex;justify-content:space-between;align-items:center;
-  flex-wrap:wrap;gap:6px;
-}
-.edu-item h3{font-size:14px;font-weight:600}
+.edu-item{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:4px}
+.edu-item h3{font-size:13px;font-weight:600}
 .edu-item .meta{font-size:12px;color:var(--text-secondary)}
-.edu-item .date{font-size:12px;color:var(--text-muted)}
+.edu-item .date{font-size:11px;color:var(--text-muted)}
 
 /* footer */
-.footer{text-align:center;padding:20px 0 28px}
+.footer{text-align:center;padding:16px 0 24px}
 .footer p{font-size:11px;color:var(--text-muted)}
 
-/* ─── print ─── */
+/* ─── print styles ─── */
 @media print{
-  body{background:#fff;padding:0}
-  .page{max-width:100%;margin:0;padding:0}
+  body{background:#fff;padding:0!important}
+  .page{max-width:100%;margin:0!important;padding:0!important}
   .resume{box-shadow:none;border-radius:0;min-height:auto}
+  .print-bar{display:none!important}
+  .sb-skill{background:#e8e8e8!important;color:#333!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .avatar{border:2px solid #ccc!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .sec-head .dot{background:#333!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .main-header{border-bottom-color:#333!important}
+  .proj .role{color:#333!important}
 }
 
 /* ─── mobile ─── */
 @media(max-width:680px){
   .resume{grid-template-columns:1fr}
-  .sidebar{border-right:none;border-bottom:1px solid var(--border)}
+  .sidebar{border-right:none;border-bottom:1px solid var(--border);padding:28px 20px}
   .page{margin:0;padding:0}
   .resume{border-radius:0}
-  .main{padding:24px 20px}
+  .main{padding:20px}
+  .print-bar{padding:0 16px;margin-top:16px}
 }
 </style>
 </head>
 <body>
 
 <div class="page">
+
+  <!-- 打印按钮 -->
+  <div class="print-bar">
+    <button class="print-btn" onclick="window.print()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><path d="M6 14h12v8H6z"/><path d="M18 12h.01"/></svg>
+      导出 PDF / 打印
+    </button>
+  </div>
+
   <div class="resume">
 
-    <!-- ═══ SIDEBAR ═══ -->
+    <!-- ═══ 左侧栏 ═══ -->
     <aside class="sidebar">
 
+      <!-- 头像 -->
       <div class="avatar-wrap">
         <div class="avatar">
-          <!-- 替换为你的照片：用 <img src="photo.jpg"> 替换下面这段 svg -->
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-            <circle cx="12" cy="7" r="4"/>
-          </svg>
+          <img src="photo.jpg" alt="郑传荣">
         </div>
       </div>
 
@@ -230,20 +256,21 @@ body{
 
       <div class="divider"></div>
 
+      <!-- 联系方式 -->
       <div class="sb-section">
         <h3>联系方式</h3>
         <div class="sb-contact">
-          <a href="tel:138XXXXXXXX">
+          <a href="tel:15392458289">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            138XXXXXXXX
+            15392458289
           </a>
-          <a href="mailto:zhengcr@example.com">
+          <a href="mailto:3053714263@qq.com">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            zhengcr@example.com
+            3053714263@qq.com
           </a>
           <span class="sb-contact-item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            中国 · 杭州
+            河南省信阳市
           </span>
           <a href="https://github.com/dghc2023" target="_blank">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
@@ -254,47 +281,47 @@ body{
 
       <div class="divider"></div>
 
+      <!-- 技术栈 -->
       <div class="sb-section">
         <h3>技术栈</h3>
         <div class="sb-skills">
-          <span class="sb-skill">Python</span>
+          <span class="sb-skill">HTML/CSS</span>
           <span class="sb-skill">JavaScript</span>
-          <span class="sb-skill">TypeScript</span>
-          <span class="sb-skill">Vue.js</span>
-          <span class="sb-skill">React</span>
-          <span class="sb-skill">Node.js</span>
-          <span class="sb-skill">Django</span>
-          <span class="sb-skill">FastAPI</span>
-          <span class="sb-skill">MySQL</span>
-          <span class="sb-skill">PostgreSQL</span>
-          <span class="sb-skill">Redis</span>
+          <span class="sb-skill">Vue3</span>
+          <span class="sb-skill">Element Plus</span>
+          <span class="sb-skill">Bootstrap</span>
+          <span class="sb-skill">Python</span>
+          <span class="sb-skill">Java</span>
+          <span class="sb-skill">SpringBoot</span>
+          <span class="sb-skill">LangChain4j</span>
+          <span class="sb-skill">Dify</span>
           <span class="sb-skill">Docker</span>
-          <span class="sb-skill">Nginx</span>
-          <span class="sb-skill">Linux</span>
           <span class="sb-skill">Git</span>
         </div>
       </div>
 
       <div class="divider"></div>
 
+      <!-- 荣誉奖项 -->
       <div class="sb-section">
-        <h3>兴趣</h3>
-        <div class="sb-interests">
-          <span class="sb-interest">开源社区</span>
-          <span class="sb-interest">AI 应用</span>
-          <span class="sb-interest">摄影</span>
-          <span class="sb-interest">骑行</span>
+        <h3>荣誉奖项</h3>
+        <div class="sb-awards">
+          <span class="sb-award">软件著作权 × 2</span>
+          <span class="sb-award">国家励志奖学金</span>
+          <span class="sb-award">省三好学生</span>
+          <span class="sb-award">优秀共青团员</span>
+          <span class="sb-award">普通话证书</span>
         </div>
       </div>
 
     </aside>
 
-    <!-- ═══ MAIN ═══ -->
+    <!-- ═══ 主内容 ═══ -->
     <main class="main">
 
       <div class="main-header">
         <h1>郑传荣</h1>
-        <div class="sub">全栈开发工程师 · 计算机科学与技术</div>
+        <div class="sub">全栈开发工程师 · 计算机应用技术</div>
         <a class="github" href="https://github.com/dghc2023" target="_blank">github.com/dghc2023</a>
       </div>
 
@@ -306,9 +333,9 @@ body{
           <span class="line"></span>
         </div>
         <div class="about-text">
-          计算机科学与技术专业本科，4 年全栈开发经验。
-          从后端 API 设计到前端交互体验，再到部署运维与性能优化，具备全链路工程能力。
-          注重代码质量与工程规范，善于从业务视角推动技术方案落地。
+          计算机应用技术专业在读，具备前后端全栈开发能力。熟悉 Vue3、SpringBoot 等主流框架，
+          有丰富的 AI 应用落地经验，善于使用 Dify 搭建智能工作流、对接大模型 API。
+          热衷于用技术解决实际问题，具备良好的团队协作与项目推动能力。
         </div>
       </div>
 
@@ -322,54 +349,65 @@ body{
 
         <div class="proj">
           <div class="proj-head">
-            <h3>智荐 · 个性化推荐引擎</h3>
-            <span class="date">2025.09 - 2025.12</span>
+            <h3>学院档案管理系统</h3>
+            <span class="date">2024.06 - 2024.12</span>
           </div>
-          <div class="role">核心开发者 · Python / FastAPI</div>
+          <div class="role">全栈开发 · Python</div>
           <p>
-            基于协同过滤与内容理解的推荐系统。负责多路召回策略设计与线上 API 开发，
-            集成实时特征计算，支撑日均 50 万次推荐请求。上线后用户点击率提升 35%，
-            服务端响应时间控制在 80ms 以内。
+            使用 Python 自动化处理全院学位档案文件，实现对批量文档的自动归类、提取与整理，
+            并打包为 exe 可执行程序方便非技术人员使用。将原本需要 3-4 小时的人工处理缩短至分钟级。
           </p>
           <div class="proj-tags">
-            <span>Python</span><span>TensorFlow</span><span>FastAPI</span>
-            <span>PostgreSQL</span><span>Redis</span><span>Docker</span>
+            <span>Python</span><span>EXE打包</span><span>自动化</span>
           </div>
         </div>
 
         <div class="proj">
           <div class="proj-head">
-            <h3>启航 · 全栈电商管理平台</h3>
-            <span class="date">2025.03 - 2025.08</span>
+            <h3>学瞳 AI · 信息摄取与智能对话系统</h3>
+            <span class="date">2024.07 - 2025.01</span>
           </div>
-          <div class="role">全栈开发 · Vue3 / Django</div>
+          <div class="role">AI 开发 · Dify / Python</div>
           <p>
-            面向中小商家的 B2B 电商管理系统，涵盖商品、订单、库存、数据看板模块。
-            独立完成前后端全栈开发，采用前后端分离架构，10 万+ SKU 场景下
-            订单处理效率较旧系统提升 60%，接口响应时间降低 40%。
+            使用 Python 批量处理学生信息数据，基于 Dify 搭建 AI 工作流实现多轮对话与智能判断。
+            负责 Dify API 对接与调试，对 AI 对话回复格式进行微调，结合 RAG 实现知识库精准检索。
+            与学院辅导员、校领导、校外导师等多方协作完成项目交付。
           </p>
           <div class="proj-tags">
-            <span>Vue3</span><span>TypeScript</span><span>Django</span>
-            <span>MySQL</span><span>Redis</span><span>Docker</span>
+            <span>Python</span><span>Dify</span><span>RAG</span><span>API</span><span>LangChain</span>
           </div>
         </div>
 
         <div class="proj">
           <div class="proj-head">
-            <h3>观澜 · 实时数据分析平台</h3>
-            <span class="date">2024.10 - 2025.01</span>
+            <h3>浏览器自动化识别系统</h3>
+            <span class="date">2024.09 - 2025.03</span>
           </div>
-          <div class="role">前端负责人 · React / D3.js</div>
+          <div class="role">全栈开发 · Python</div>
           <p>
-            面向运营团队的多维度实时数据看板，支持自定义指标、毫秒级数据推送和下钻分析。
-            负责前端架构搭建与大屏可视化方案设计，日处理 200 万+ 事件数据，
-            页面首屏加载时间优化至 1.2 秒以内。
+            实现自动对浏览器视频播放速度的精准识别与数据对比分析。同时基于 Python + 浏览器自动化方案，
+            开发谷歌账号信息自动修改工具，实现账号数据的批量处理与自动操作。
           </p>
           <div class="proj-tags">
-            <span>React</span><span>D3.js</span><span>Node.js</span>
-            <span>WebSocket</span><span>PostgreSQL</span><span>Nginx</span>
+            <span>Python</span><span>浏览器自动化</span><span>数据采集</span>
           </div>
         </div>
+
+        <div class="proj">
+          <div class="proj-head">
+            <h3>AI 内容安全审核系统</h3>
+            <span class="date">2025.01 - 2025.09</span>
+          </div>
+          <div class="role">前后端开发 · LLM API</div>
+          <p>
+            基于大模型 API 实现图像内容精准识别与安全审核，结合知识库实现智能内容推荐与科普。
+            使用 Sealos 容器实现公网部署，前后端独立开发完成。
+          </p>
+          <div class="proj-tags">
+            <span>Python</span><span>LLM API</span><span>RAG</span><span>Sealos</span><span>Docker</span>
+          </div>
+        </div>
+
       </div>
 
       <!-- 教育背景 -->
@@ -381,10 +419,23 @@ body{
         </div>
         <div class="edu-item">
           <div>
-            <h3>计算机科学与技术</h3>
-            <div class="meta">某某大学 · 本科</div>
+            <h3>计算机应用技术</h3>
+            <div class="meta">郑州信息工程职业学院 · 大专</div>
           </div>
-          <span class="date">2021 - 2025</span>
+          <span class="date">2023.09 - 2027.07</span>
+        </div>
+      </div>
+
+      <!-- 在校经历 -->
+      <div class="sec">
+        <div class="sec-head">
+          <span class="dot"></span>
+          <h2>在校经历</h2>
+          <span class="line"></span>
+        </div>
+        <div class="about-text">
+          计算机协会成员、AI 研习社成员；担任班级副班长/班长、学生会学习部干事。
+          参与并组织学校教师节、元旦节等活动的后勤安排；参加校园车站志愿服务，累计志愿时长 70+ 小时。
         </div>
       </div>
 
@@ -392,7 +443,12 @@ body{
   </div>
 
   <footer class="footer">
-    <p>&copy; 2026 郑传荣 &nbsp;·&nbsp; 在线简历 &nbsp;·&nbsp; <a href="https://github.com/dghc2023" target="_blank" style="color:var(--blue);text-decoration:none">GitHub</a></p>
+    <p>
+      &copy; 2026 郑传荣 &nbsp;·&nbsp;
+      <a href="https://github.com/dghc2023" target="_blank" style="color:var(--blue);text-decoration:none">GitHub</a>
+      &nbsp;·&nbsp; 在线简历 &nbsp;·&nbsp;
+      <a href="#" onclick="window.print()" style="color:var(--blue);text-decoration:none">导出 PDF</a>
+    </p>
   </footer>
 </div>
 
