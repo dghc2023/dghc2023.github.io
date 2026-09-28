@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>郑传荣的博客 · 写代码，读杂书，偶尔记录</title>
+<meta name="description" content="郑传荣的个人博客：记录技术实践、工具效率与读书随笔。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%232E5544'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' font-family='serif' fill='%23F2F0E9'%3E荣%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://miaoda.feishu.cn">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@600;700;900&family=Noto+Sans+SC:wght@400;500;700&display=swap">
+<style>
+:root{
+  --paper:#F2F0E9;
+  --paper-2:#E9E6DC;
+  --ink:#22302A;
+  --pine:#2E5544;
+  --pine-deep:#1D3B30;
+  --clay:#A64E2E;
+  --muted:#67746D;
+  --line:#D8D4C8;
+  --line-strong:#B9B4A5;
+  --shadow-line:0 1px 0 rgba(34,48,42,.08);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Noto Sans SC",-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+  font-size:16px;
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+  background-image:radial-gradient(rgba(34,48,42,.035) 1px, transparent 1px);
+  background-size:26px 26px;
+}
+::selection{background:var(--pine);color:var(--paper)}
+a{color:var(--pine);text-decoration:none;transition:color .18s ease}
+a:hover{color:var(--clay)}
+:focus-visible{outline:2px solid var(--clay);outline-offset:3px;border-radius:2px}
+
+/* ===== 顶栏 ===== */
+.site-head{
+  position:sticky;top:0;z-index:50;
+  background:rgba(242,240,233,.92);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.head-inner{
+  max-width:880px;margin:0 auto;padding:14px 24px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.brand{
+  font-family:"Noto Serif SC",serif;font-weight:900;font-size:19px;
+  color:var(--pine-deep);letter-spacing:.05em;
+}
+.brand .dot{color:var(--clay)}
+.nav{display:flex;gap:26px;align-items:center}
+.nav a{
+  font-size:14.5px;color:var(--muted);font-weight:500;
+  position:relative;padding:4px 0;
+}
+.nav a:hover{color:var(--pine)}
+.nav a::after{
+  content:"";position:absolute;left:0;bottom:0;height:2px;width:100%;
+  background:var(--clay);transform:scaleX(0);transform-origin:left;
+  transition:transform .22s ease;
+}
+.nav a:hover::after{transform:scaleX(1)}
+.nav a[aria-current="true"]{color:var(--pine-deep)}
+
+/* ===== Hero ===== */
+.hero{
+  max-width:880px;margin:0 auto;padding:72px 24px 56px;
+}
+.hero .kicker{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:13.5px;color:var(--clay);letter-spacing:.22em;font-weight:500;
+  margin-bottom:22px;
+}
+.hero .kicker::before{content:"";width:28px;height:1px;background:var(--clay)}
+.hero h1{
+  font-family:"Noto Serif SC",serif;font-weight:900;
+  font-size:clamp(34px,6vw,52px);line-height:1.2;
+  letter-spacing:.02em;color:var(--pine-deep);
+  max-width:14em;
+}
+.hero .lead{
+  margin-top:20px;font-size:17px;color:var(--muted);max-width:34em;
+}
+.hero .stats{
+  margin-top:34px;display:flex;gap:0;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+}
+.stat{
+  flex:1;padding:16px 8px 16px 0;
+}
+.stat + .stat{border-left:1px solid var(--line);padding-left:20px}
+.stat .num{
+  font-family:"Noto Serif SC",serif;font-weight:700;font-size:24px;color:var(--pine-deep);
+  font-variant-numeric:tabular-nums;
+}
+.stat .label{font-size:12.5px;color:var(--muted);letter-spacing:.08em;margin-top:2px}
+.stat .num small{font-size:14px;color:var(--clay);font-weight:700;margin-left:2px}
+
+/* ===== 区块通用 ===== */
+.section{
+  max-width:880px;margin:0 auto;padding:64px 24px 24px;
+  border-top:1px solid var(--line);
+}
+.section-title{
+  display:flex;align-items:baseline;gap:14px;margin-bottom:34px;
+}
+.section-title .zh{
+  font-family:"Noto Serif SC",serif;font-weight:700;font-size:26px;color:var(--pine-deep);
+}
+.section-title .en{
+  font-size:13px;color:var(--muted);letter-spacing:.18em;text-transform:uppercase;
+}
+.section-title::after{content:"";flex:1;height:1px;background:var(--line)}
+
+/* ===== 文章列表（期刊目录式） ===== */
+.post-filter{
+  margin-bottom:26px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+}
+.filter-box{
+  display:flex;align-items:center;gap:8px;flex:1;min-width:240px;max-width:360px;
+  border:1px solid var(--line-strong);background:rgba(255,255,255,.4);
+  padding:8px 14px;border-radius:6px;transition:border-color .18s ease;
+}
+.filter-box:focus-within{border-color:var(--pine)}
+.filter-box svg{flex:none;color:var(--muted)}
+.filter-box input{
+  border:0;outline:0;background:transparent;width:100%;
+  font-size:14.5px;color:var(--ink);font-family:inherit;
+}
+.filter-box input::placeholder{color:#9A988E}
+.tag-filter{display:flex;gap:8px;flex-wrap:wrap}
+.tag-filter button{
+  border:1px solid var(--line-strong);background:transparent;color:var(--muted);
+  font-size:13px;padding:5px 12px;border-radius:999px;cursor:pointer;
+  font-family:inherit;transition:all .16s ease;
+}
+.tag-filter button:hover{border-color:var(--pine);color:var(--pine)}
+.tag-filter button[aria-pressed="true"]{
+  background:var(--pine);border-color:var(--pine);color:var(--paper);
+}
+.post-list{border-top:1px solid var(--line)}
+.post{
+  display:grid;grid-template-columns:84px 1fr;
+  gap:0 26px;padding:26px 0;border-bottom:1px solid var(--line);
+  cursor:pointer;position:relative;
+}
+.post .date{
+  font-family:"Noto Serif SC",serif;font-weight:600;font-size:15px;color:var(--clay);
+  font-variant-numeric:tabular-nums;padding-top:3px;letter-spacing:.02em;
+}
+.post .date .year{display:block;font-size:12px;color:var(--muted);font-weight:500;margin-top:2px}
+.post h3{
+  font-family:"Noto Serif SC",serif;font-weight:700;font-size:19px;line-height:1.45;
+  color:var(--ink);transition:color .16s ease;
+}
+.post:hover h3{color:var(--pine)}
+.post .meta{display:flex;gap:12px;align-items:center;margin:8px 0 10px;flex-wrap:wrap}
+.post .cat{
+  font-size:12px;letter-spacing:.1em;color:var(--paper);
+  background:var(--pine);padding:2px 9px;border-radius:999px;
+}
+.post .cat.clay{background:var(--clay)}
+.post .read{font-size:12.5px;color:var(--muted)}
+.post p.summary{font-size:14.5px;color:var(--muted);line-height:1.7;max-width:52em}
+.post::after{
+  content:"→";position:absolute;right:6px;top:50%;transform:translateY(-50%);
+  color:var(--line-strong);font-size:20px;opacity:0;transition:opacity .18s ease, transform .18s ease;
+}
+.post:hover::after{opacity:1;color:var(--clay);transform:translateY(-50%) translateX(4px)}
+.empty-state{
+  padding:44px 0;text-align:center;color:var(--muted);font-size:14.5px;display:none;
+}
+.empty-state.show{display:block}
+
+/* ===== 关于 ===== */
+.about-grid{
+  display:grid;grid-template-columns:1fr 1.6fr;gap:40px;
+}
+.about-intro p{font-size:15px;color:var(--muted);line-height:1.85}
+.about-intro p + p{margin-top:14px}
+.about-intro strong{color:var(--pine-deep);font-weight:700}
+.skills{margin-top:26px}
+.skills h4{
+  font-size:13px;letter-spacing:.14em;color:var(--muted);
+  margin-bottom:14px;font-weight:700;
+}
+.skill-tags{display:flex;flex-wrap:wrap;gap:8px}
+.skill-tags span{
+  font-size:13px;color:var(--pine-deep);border:1px solid var(--line-strong);
+  padding:4px 12px;border-radius:6px;background:rgba(255,255,255,.35);
+}
+.timeline{
+  --col-time:92px;--col-axis:26px;--col-gap:14px;
+  display:grid;gap:0;
+  position:relative;
+}
+.timeline::before{
+  content:"";position:absolute;top:8px;bottom:8px;
+  left:calc(var(--col-time) + var(--col-gap) + var(--col-axis) / 2 - 1px);
+  width:2px;background:var(--line-strong);
+}
+.tl-item{
+  display:grid;
+  grid-template-columns:var(--col-time) var(--col-axis) 1fr;
+  column-gap:var(--col-gap);
+  padding-bottom:26px;position:relative;
+}
+.tl-item:last-child{padding-bottom:0}
+.tl-date{
+  grid-column:1;justify-self:end;align-self:start;
+  font-family:"Noto Serif SC",serif;font-weight:600;font-size:14.5px;color:var(--clay);
+  font-variant-numeric:tabular-nums;padding-top:3px;
+}
+.tl-node{
+  grid-column:2;justify-self:center;align-self:start;margin-top:8px;
+  width:11px;height:11px;border-radius:50%;background:var(--pine);
+  border:2.5px solid var(--paper);box-shadow:0 0 0 1.5px var(--pine);
+  position:relative;z-index:1;
+}
+.tl-body{grid-column:3;align-self:start}
+.tl-body h5{
+  font-size:16px;color:var(--ink);font-weight:700;margin-bottom:4px;
+}
+.tl-body p{font-size:14px;color:var(--muted);line-height:1.7}
+
+/* ===== 页脚 ===== */
+.site-foot{
+  max-width:880px;margin:0 auto;padding:40px 24px 56px;
+  display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;
+  color:var(--muted);font-size:13.5px;
+}
+.site-foot a{color:var(--pine);font-weight:500}
+.site-foot .links{display:flex;gap:18px;align-items:center}
+.site-foot .links svg{vertical-align:-3px;margin-right:4px}
+
+/* ===== 回到顶部 ===== */
+#toTop{
+  position:fixed;right:26px;bottom:26px;width:42px;height:42px;
+  border-radius:50%;border:1px solid var(--line-strong);
+  background:var(--paper);color:var(--pine-deep);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;visibility:hidden;transition:opacity .2s ease,visibility .2s ease,transform .2s ease;
+  transform:translateY(8px);box-shadow:0 2px 10px rgba(34,48,42,.1);
+}
+#toTop.show{opacity:1;visibility:visible;transform:translateY(0)}
+#toTop:hover{background:var(--pine);color:var(--paper)}
+
+/* ===== Toast ===== */
+#toast{
+  position:fixed;left:50%;bottom:34px;transform:translateX(-50%) translateY(16px);
+  background:var(--pine-deep);color:var(--paper);font-size:14px;
+  padding:11px 22px;border-radius:8px;opacity:0;visibility:hidden;
+  transition:opacity .22s ease,transform .22s ease,visibility .22s ease;
+  box-shadow:0 6px 22px rgba(29,59,48,.28);z-index:100;max-width:86vw;
+}
+#toast.show{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+
+/* ===== 响应式 ===== */
+@media (max-width:720px){
+  .hero{padding:52px 20px 44px}
+  .section{padding:48px 20px 20px}
+  .head-inner{padding:12px 16px}
+  .nav{gap:6px}
+  .nav a{font-size:13.5px;padding:10px 9px;margin:0 -3px}
+  .post{grid-template-columns:1fr;gap:10px}
+  .post .date{font-size:13px}
+  .post .date .year{display:inline;margin-left:6px}
+  .about-grid{grid-template-columns:1fr;gap:30px}
+  .stat .num{font-size:20px}
+  .stat + .stat{padding-left:14px}
+  .tag-filter button{min-height:44px}
+  .site-foot a{padding:10px 6px;margin:0 -6px}
+  .filter-box input{font-size:16px}
+  .timeline{--col-time:78px;--col-axis:24px;--col-gap:10px}
+  .tl-date{font-size:13.5px}
+  .tl-body p{font-size:13.5px}
+  .site-foot{padding:32px 20px 48px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important;animation:none!important}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== 顶栏 ===== -->
+<header class="site-head">
+  <div class="head-inner">
+    <div class="brand">郑传荣<span class="dot">·</span>博客</div>
+    <nav class="nav" aria-label="站点导航">
+      <a href="#top" aria-current="true">首页</a>
+      <a href="#posts">文章</a>
+      <a href="#about">关于</a>
+      <a href="https://github.com/dghc2023" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ===== Hero ===== -->
+  <section class="hero">
+    <div class="kicker">独立博客 · 2026</div>
+    <h1>写代码，读杂书，<br>偶尔留下一点记录。</h1>
+    <p class="lead">这里是郑传荣的博客。记录技术实践中的取舍、工具与效率的折腾，以及读书时的一些想法。内容不多，胜在真实。</p>
+    <div class="stats" aria-label="博客概况">
+      <div class="stat"><div class="num">6<small>篇</small></div><div class="label">文章</div></div>
+      <div class="stat"><div class="num">5<small>类</small></div><div class="label">标签</div></div>
+      <div class="stat"><div class="num">2026<small>年</small></div><div class="label">博客开张</div></div>
+    </div>
+  </section>
+
+  <!-- ===== 文章列表 ===== -->
+  <section class="section" id="posts">
+    <h2 class="section-title"><span class="zh">文章</span><span class="en">Posts</span></h2>
+
+    <div class="post-filter">
+      <label class="filter-box" for="q">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="q" type="search" placeholder="搜索文章标题或摘要…" autocomplete="off">
+      </label>
+      <div class="tag-filter" role="group" aria-label="按标签筛选">
+        <button data-tag="全部" aria-pressed="true">全部</button>
+        <button data-tag="技术实践" aria-pressed="false">技术实践</button>
+        <button data-tag="前端工程" aria-pressed="false">前端工程</button>
+        <button data-tag="工具效率" aria-pressed="false">工具效率</button>
+        <button data-tag="随笔" aria-pressed="false">随笔</button>
+      </div>
+    </div>
+
+    <div class="post-list" id="postList">
+      <article class="post" data-title="从零搭一个 RAG 聊天机器人" data-cat="技术实践">
+        <div class="date">09-14<span class="year">2026</span></div>
+        <div class="content">
+          <h3>从零搭一个 RAG 聊天机器人：DeepSeek 与 Qwen 的双模型协作</h3>
+          <div class="meta"><span class="cat">技术实践</span><span class="read">约 12 分钟阅读</span></div>
+          <p class="summary">把检索、生成拆成两条独立管线，在 Cloudflare Workers 上做无服务器部署。这篇记录完整的架构取舍：为什么选双模型、向量库怎么选、以及遇到的坑。</p>
+        </div>
+      </article>
+      <article class="post" data-title="网页简历迭代记" data-cat="前端工程">
+        <div class="date">08-30<span class="year">2026</span></div>
+        <div class="content">
+          <h3>网页简历迭代记：从暗色动效到商务排版的五版重构</h3>
+          <div class="meta"><span class="cat">前端工程</span><span class="read">约 8 分钟阅读</span></div>
+          <p class="summary">一份简历主页改了五版：暗色编辑风、轻奢商务风、左右分栏……每次重构都在追问同一件事——排版的目的是让信息更快被读到，而不是更炫。</p>
+        </div>
+      </article>
+      <article class="post" data-title="衣柜整理器与标签系统" data-cat="工具效率">
+        <div class="date">08-12<span class="year">2026</span></div>
+        <div class="content">
+          <h3>衣柜整理器与标签系统的设计：一次数据组织的练习</h3>
+          <div class="meta"><span class="cat">工具效率</span><span class="read">约 6 分钟阅读</span></div>
+          <p class="summary">给衣柜写一个排序器，意外学到不少数据组织的道理：标签要不要层级、排序规则该放在数据层还是视图层、以及"够用"比"完备"更重要。</p>
+        </div>
+      </article>
+      <article class="post" data-title="写博客是为了给未来的自己留索引" data-cat="随笔">
+        <div class="date">07-21<span class="year">2026</span></div>
+        <div class="content">
+          <h3>写博客是为了给未来的自己留索引</h3>
+          <div class="meta"><span class="cat clay">随笔</span><span class="read">约 5 分钟阅读</span></div>
+          <p class="summary">很多问题在解决的那一刻就忘记了。把过程和结论写下来，相当于给未来的自己留一份可检索的记忆。这篇是博客开张的动机说明。</p>
+        </div>
+      </article>
+      <article class="post" data-title="GitHub Pages 部署个人网站的三种姿势" data-cat="前端工程">
+        <div class="date">06-30<span class="year">2026</span></div>
+        <div class="content">
+          <h3>GitHub Pages 部署个人网站的三种姿势</h3>
+          <div class="meta"><span class="cat">前端工程</span><span class="read">约 7 分钟阅读</span></div>
+          <p class="summary">用户名仓库、项目仓库子路径、自定义域名——三种部署方式的差异与选择。附一份无需构建工具的纯静态部署清单。</p>
+        </div>
+      </article>
+      <article class="post" data-title="重读《设计中的设计》" data-cat="随笔">
+        <div class="date">05-15<span class="year">2026</span></div>
+        <div class="content">
+          <h3>重读《设计中的设计》：克制是一种能力</h3>
+          <div class="meta"><span class="cat clay">随笔</span><span class="read">约 6 分钟阅读</span></div>
+          <p class="summary">第二次读原研哉，才读懂"白"不是没有设计，而是设计完成之后的收敛。摘几段与编程中的克制对照着看，很有意思。</p>
+        </div>
+      </article>
+    </div>
+    <div class="empty-state" id="emptyState">没有匹配的文章，换个关键词试试。</div>
+  </section>
+
+  <!-- ===== 关于 ===== -->
+  <section class="section" id="about">
+    <h2 class="section-title"><span class="zh">关于</span><span class="en">About</span></h2>
+    <div class="about-grid">
+      <div>
+        <div class="about-intro">
+          <p><strong>郑传荣</strong>，一名写代码的工程师。日常与前端、AI 应用和自动化工具打交道，喜欢把重复的事情交给程序，把时间留给值得想的问题。</p>
+          <p>这个博客没有宏大的主题，只有真实的实践与想法。如果你恰好读到某篇，欢迎通过 GitHub 联系我。</p>
+        </div>
+        <div class="skills">
+          <h4>常打交道</h4>
+          <div class="skill-tags">
+            <span>JavaScript / TypeScript</span><span>React</span><span>Node.js</span>
+            <span>Python</span><span>GitHub Actions</span><span>AI 应用开发</span>
+          </div>
+        </div>
+      </div>
+      <div class="timeline" aria-label="博客时间线">
+        <div class="tl-item">
+          <div class="tl-date">2026·05</div>
+          <div class="tl-node" aria-hidden="true"></div>
+          <div class="tl-body"><h5>简历页上线</h5><p>用 GitHub Pages 发布个人简历主页，也是第一次认真做静态站。</p></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">2026·06</div>
+          <div class="tl-node" aria-hidden="true"></div>
+          <div class="tl-body"><h5>第一个 AI 项目</h5><p>RAG 聊天机器人开源，把 DeepSeek 与 Qwen 串进一条检索生成管线。</p></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">2026·09</div>
+          <div class="tl-node" aria-hidden="true"></div>
+          <div class="tl-body"><h5>博客开张</h5><p>本页上线，开始把零散的实践整理成可检索的记录。</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <div>© 2026 郑传荣 · 用 HTML 手写，托管于 GitHub Pages</div>
+  <div class="links">
+    <a href="https://github.com/dghc2023" target="_blank" rel="noopener">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55v-2.16c-3.2.7-3.87-1.54-3.87-1.54-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.75 2.69 1.25 3.35.95.1-.74.4-1.25.72-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.62 1.59.23 2.76.11 3.05.74.81 1.18 1.83 1.18 3.09 0 4.42-2.7 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .3.2.66.8.55A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+    GitHub
+    </a>
+    <span>最后更新 2026-09-28</span>
+  </div>
+</footer>
+
+<button id="toTop" aria-label="回到顶部">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg>
+</button>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<!-- ===== 交互脚本 ===== -->
+<script>
+(function(){
+  "use strict";
+
+  /* --- Toast 提示 --- */
+  var toastEl=document.getElementById("toast");
+  var toastTimer=null;
+  function showToast(msg){
+    toastEl.textContent=msg;
+    toastEl.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer=setTimeout(function(){toastEl.classList.remove("show")},2200);
+  }
+
+  /* --- 文章卡片：点击提示（完整文章页待建设） --- */
+  var posts=document.querySelectorAll(".post");
+  posts.forEach(function(p){
+    p.addEventListener("click",function(){
+      var t=p.querySelector("h3").textContent;
+      showToast("《"+t+"》完整文章页正在建设中，敬请期待");
+    });
+    p.addEventListener("keydown",function(e){
+      if(e.key==="Enter"||e.key===" "){e.preventDefault();p.click()}
+    });
+    p.tabIndex=0;
+  });
+
+  /* --- 搜索与标签过滤 --- */
+  var qInput=document.getElementById("q");
+  var tagButtons=document.querySelectorAll(".tag-filter button");
+  var emptyEl=document.getElementById("emptyState");
+  var currentTag="全部";
+
+  function applyFilter(){
+    var kw=(qInput.value||"").trim().toLowerCase();
+    var visible=0;
+    posts.forEach(function(p){
+      var title=p.getAttribute("data-title").toLowerCase();
+      var text=(p.querySelector("h3").textContent+" "+p.querySelector(".summary").textContent).toLowerCase();
+      var cat=p.getAttribute("data-cat");
+      var matchTag=(currentTag==="全部")||(cat===currentTag);
+      var matchKw=(kw==="")||(title.indexOf(kw)>-1)||(text.indexOf(kw)>-1);
+      var show=matchTag&&matchKw;
+      p.style.display=show?"":"none";
+      if(show)visible++;
+    });
+    emptyEl.classList.toggle("show",visible===0);
+  }
+
+  qInput.addEventListener("input",applyFilter);
+  tagButtons.forEach(function(b){
+    b.addEventListener("click",function(){
+      currentTag=b.getAttribute("data-tag");
+      tagButtons.forEach(function(x){x.setAttribute("aria-pressed",String(x===b))});
+      applyFilter();
+    });
+  });
+
+  /* --- 顶栏当前项高亮（滚动时） --- */
+  var navLinks=document.querySelectorAll(".nav a[href^='#']");
+  var sections=["top","posts","about"];
+  function onScroll(){
+    var y=window.scrollY||document.documentElement.scrollTop;
+    /* 回到顶部按钮 */
+    var toTop=document.getElementById("toTop");
+    toTop.classList.toggle("show",y>500);
+    /* 导航高亮 */
+    var current="top";
+    sections.forEach(function(id){
+      var el=document.getElementById(id);
+      if(el&&el.getBoundingClientRect().top<=120)current=id;
+    });
+    if(y+window.innerHeight>=document.documentElement.scrollHeight-4)current="about";
+    navLinks.forEach(function(a){
+      a.setAttribute("aria-current",String(a.getAttribute("href")==="#"+current));
+    });
+  }
+  window.addEventListener("scroll",onScroll,{passive:true});
+  onScroll();
+
+  /* --- 回到顶部 --- */
+  document.getElementById("toTop").addEventListener("click",function(){
+    window.scrollTo({top:0,behavior:"smooth"});
+  });
+
+})();
+</script>
+</body>
+</html>
