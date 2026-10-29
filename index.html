@@ -1,457 +1,421 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>郑传荣 · 个人简历</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-
-:root{
-  --bg:#eef0f2;
-  --surface:#fff;
-  --sidebar:#f8f9fb;
-  --blue:#2563eb;
-  --blue-light:#dbeafe;
-  --blue-dark:#1e40af;
-  --text:#1e293b;
-  --text-secondary:#64748b;
-  --text-muted:#94a3b8;
-  --border:#e2e6ea;
-  --shadow:0 1px 8px rgba(0,0,0,0.06);
-}
-
-body{
-  font-family:'Sora','Segoe UI',sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  line-height:1.5;
-  -webkit-font-smoothing:antialiased;
-}
-
-.page{max-width:900px;margin:32px auto;padding:0 16px}
-
-/* ─── print button ─── */
-.print-bar{
-  display:flex;justify-content:flex-end;margin-bottom:12px;
-}
-.print-btn{
-  display:inline-flex;align-items:center;gap:6px;
-  padding:8px 18px;border-radius:8px;
-  background:var(--surface);border:1px solid var(--border);
-  color:var(--text-secondary);font-size:13px;
-  font-family:inherit;cursor:pointer;
-  transition:all .2s;box-shadow:var(--shadow);
-}
-.print-btn:hover{
-  border-color:var(--blue);color:var(--blue);
-  box-shadow:0 2px 12px rgba(37,99,235,0.1);
-}
-.print-btn svg{width:15px;height:15px}
-
-/* ─── resume two-column ─── */
-.resume{
-  background:var(--surface);border-radius:16px;
-  box-shadow:var(--shadow);overflow:hidden;
-  display:grid;grid-template-columns:270px 1fr;
-}
-
-/* ═══ SIDEBAR ═══ */
-.sidebar{
-  background:var(--sidebar);padding:32px 24px;
-  border-right:1px solid var(--border);
-  display:flex;flex-direction:column;gap:18px;
-}
-
-.avatar-wrap{text-align:center}
-.avatar{
-  width:110px;height:110px;border-radius:50%;
-  margin:0 auto 10px;overflow:hidden;
-  border:3px solid var(--surface);
-  box-shadow:0 2px 12px rgba(37,99,235,0.12);
-}
-.avatar img{width:100%;height:100%;object-fit:cover}
-
-.sidebar-name h1{
-  font-size:20px;font-weight:700;color:var(--text);
-  text-align:center;line-height:1.2;
-}
-.sidebar-name .title{
-  font-size:12px;color:var(--text-secondary);
-  text-align:center;margin-top:2px;font-weight:400;
-}
-
-.sb-section h3{
-  font-size:11px;text-transform:uppercase;
-  letter-spacing:1.5px;color:var(--text-muted);
-  margin-bottom:8px;font-weight:600;
-}
-
-.sb-contact{display:flex;flex-direction:column;gap:6px}
-.sb-contact a,.sb-contact .sb-contact-item{
-  display:flex;align-items:center;gap:8px;
-  font-size:12px;color:var(--text-secondary);text-decoration:none;
-  line-height:1.3;transition:color .15s;
-}
-.sb-contact a:hover{color:var(--blue)}
-.sb-contact svg{
-  width:13px;height:13px;flex-shrink:0;
-  color:var(--blue);opacity:0.7;
-}
-
-.sb-skills{display:flex;flex-wrap:wrap;gap:4px}
-.sb-skill{
-  font-size:10px;padding:3px 9px;border-radius:4px;
-  background:var(--blue-light);color:var(--blue-dark);
-  font-weight:500;line-height:1.4;
-}
-
-.sb-awards{display:flex;flex-direction:column;gap:4px}
-.sb-award{
-  font-size:11px;color:var(--text-secondary);
-  padding-left:10px;position:relative;line-height:1.4;
-}
-.sb-award::before{
-  content:'';position:absolute;left:0;top:6px;
-  width:4px;height:4px;border-radius:50%;background:var(--blue);opacity:0.5;
-}
-
-.divider{height:1px;background:var(--border);margin:2px 0}
-
-/* ═══ MAIN ═══ */
-.main{padding:28px 32px;display:flex;flex-direction:column;gap:0}
-
-.main-header{
-  margin-bottom:12px;padding-bottom:12px;
-  border-bottom:2px solid var(--blue);
-}
-.main-header h1{
-  font-size:26px;font-weight:700;color:var(--text);
-  letter-spacing:-0.3px;
-}
-.main-header .sub{
-  font-size:13px;color:var(--text-secondary);margin-top:2px;
-  font-weight:400;
-}
-.main-header .github{
-  display:inline-block;margin-top:4px;
-  font-size:12px;color:var(--blue);text-decoration:none;
-  font-weight:500;
-}
-.main-header .github:hover{text-decoration:underline}
-
-.sec{margin-bottom:14px}
-.sec-head{
-  display:flex;align-items:center;gap:10px;margin-bottom:8px;
-}
-.sec-head .dot{
-  width:6px;height:6px;border-radius:50%;background:var(--blue);flex-shrink:0;
-}
-.sec-head h2{
-  font-size:14px;font-weight:600;color:var(--text);
-}
-.sec-head .line{flex:1;height:1px;background:var(--border)}
-
-.about-text{font-size:12px;color:var(--text-secondary);line-height:1.7;}
-
-/* project */
-.proj{padding:10px 0 8px}
-.proj+.proj{border-top:1px solid var(--border)}
-.proj-head{
-  display:flex;justify-content:space-between;align-items:baseline;
-  flex-wrap:wrap;gap:2px;margin-bottom:1px;
-}
-.proj-head h3{font-size:13px;font-weight:600;color:var(--text)}
-.proj-head .date{font-size:10px;color:var(--text-muted);white-space:nowrap}
-.proj .role{font-size:11px;color:var(--blue);font-weight:500;margin-bottom:2px}
-.proj p{font-size:11px;color:var(--text-secondary);line-height:1.6;}
-.proj-tags{display:flex;flex-wrap:wrap;gap:3px;margin-top:4px}
-.proj-tags span{
-  font-size:10px;padding:2px 7px;border-radius:3px;
-  background:#f1f5f9;color:var(--text-secondary);
-  font-weight:500;
-}
-
-/* education */
-.edu-item{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:4px}
-.edu-item h3{font-size:13px;font-weight:600}
-.edu-item .meta{font-size:12px;color:var(--text-secondary)}
-.edu-item .date{font-size:11px;color:var(--text-muted)}
-
-/* footer */
-.footer{text-align:center;padding:16px 0 24px}
-.footer p{font-size:11px;color:var(--text-muted)}
-.footer a{color:var(--blue);text-decoration:none}
-
-/* ─── print ─── */
-@media print{
-  body{background:#fff;padding:0!important}
-  .page{max-width:100%;margin:0!important;padding:0!important}
-  .resume{box-shadow:none;border-radius:0}
-  .print-bar{display:none!important}
-  .sb-skill{background:#e8e8e8!important;color:#333!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  .sec-head .dot{background:#333!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  .main-header{border-bottom-color:#333!important}
-  .proj .role{color:#333!important}
-}
-
-@media(max-width:680px){
-  .resume{grid-template-columns:1fr}
-  .sidebar{border-right:none;border-bottom:1px solid var(--border);padding:24px 20px}
-  .page{margin:0;padding:0}
-  .resume{border-radius:0}
-  .main{padding:20px}
-  .print-bar{padding:0 16px;margin-top:16px}
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#FBFAF8">
+  <title>郑传荣 · AI Agent 开发</title>
+  <meta name="description" content="郑传荣的个人主页 —— AI Agent 开发，全栈与智能应用。厦门工学院软件工程，独立完成 3 个完整项目，2 项省级大创立项，2 项软件著作权。">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="page">
+  <!-- ===== 顶部导航 ===== -->
+  <header class="navbar" id="navbar">
+    <div class="nav-progress" id="navProgress" aria-hidden="true"></div>
+    <div class="container nav-inner">
+      <a href="#hero" class="logo">郑传荣</a>
 
-  <div class="print-bar">
-    <button class="print-btn" onclick="window.print()">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><path d="M6 14h12v8H6z"/><path d="M18 12h.01"/></svg>
-      导出 PDF / 打印
-    </button>
-  </div>
+      <nav class="nav-links" id="navLinks">
+        <a href="#about" class="nav-link">关于</a>
+        <a href="#skills" class="nav-link">技能</a>
+        <a href="#projects" class="nav-link">项目</a>
+        <a href="#certs" class="nav-link">证书</a>
+        <a href="#contact" class="nav-link">联系</a>
+      </nav>
 
-  <div class="resume">
+      <a href="mailto:3053714263@qq.com" class="nav-cta">聊聊 →</a>
 
-    <!-- ═══ 左侧栏 ═══ -->
-    <aside class="sidebar">
+      <button class="nav-toggle" id="navToggle" aria-label="打开菜单" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
 
-      <div class="avatar-wrap">
-        <div class="avatar">
-          <img src="photo.jpg" alt="郑传荣">
-        </div>
-      </div>
+  <main>
 
-      <div class="sidebar-name">
-        <h1>郑传荣</h1>
-        <div class="title">软件开发工程师</div>
-      </div>
+    <!-- ===== 首屏 ===== -->
+    <section class="hero" id="hero">
+      <div class="container">
+        <p class="hero-meta">
+          <span>福建 · 厦门</span>
+          <span>厦门工学院 · 软件工程</span>
+          <span>2027 届</span>
+        </p>
 
-      <div class="divider"></div>
+        <h1 class="hero-name">郑传荣</h1>
 
-      <div class="sb-section">
-        <h3>联系方式</h3>
-        <div class="sb-contact">
-          <a href="tel:15392458289">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            15392458289
+        <p class="hero-role">AI Agent 开发 <span class="slash">/</span> 全栈工程</p>
+
+        <p class="hero-desc">
+          独立完成 3 个从零到上线的项目 —— 数据库设计、接口开发、阿里云部署全链路自己走完。
+          方向是 AI Agent 与全栈开发，习惯把大问题拆小、快速验证。
+        </p>
+
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-solid">
+            看我的项目
+            <svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-          <a href="mailto:3053714263@qq.com">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            3053714263@qq.com
-          </a>
-          <span class="sb-contact-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            福建省厦门市
-          </span>
-          <a href="https://github.com/dghc2023" target="_blank">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-            dghc2023
-          </a>
+          <a href="#contact" class="btn btn-line">联系方式</a>
         </div>
+
+        <ul class="hero-facts">
+          <li><strong>3</strong><span>独立完成的项目</span></li>
+          <li><strong>2</strong><span>省级大创立项</span></li>
+          <li><strong>2</strong><span>软件著作权</span></li>
+          <li><strong>5</strong><span>认证与竞赛奖项</span></li>
+        </ul>
       </div>
+    </section>
 
-      <div class="divider"></div>
-
-      <div class="sb-section">
-        <h3>专业技能</h3>
-        <div class="sb-skills">
-          <span class="sb-skill">HTML/CSS</span>
-          <span class="sb-skill">JavaScript</span>
-          <span class="sb-skill">Vue3</span>
-          <span class="sb-skill">Element Plus</span>
-          <span class="sb-skill">Bootstrap</span>
-          <span class="sb-skill">Python</span>
-          <span class="sb-skill">Java</span>
-          <span class="sb-skill">SpringBoot</span>
-          <span class="sb-skill">LangChain4j</span>
-          <span class="sb-skill">OpenCV</span>
-          <span class="sb-skill">Dify</span>
-          <span class="sb-skill">Docker</span>
-          <span class="sb-skill">Git</span>
-        </div>
-      </div>
-
-      <div class="divider"></div>
-
-      <div class="sb-section">
-        <h3>证书 &amp; 荣誉</h3>
-        <div class="sb-awards">
-          <span class="sb-award">计算机二级</span>
-          <span class="sb-award">软件著作权 × 2（申请中）</span>
-          <span class="sb-award">蓝桥杯 · 省三等奖</span>
-          <span class="sb-award">非遗设计比赛 · 小组一等奖</span>
-          <span class="sb-award">商务数据分析大赛 · 小组二等奖</span>
-          <span class="sb-award">精英选拔赛 · 二等奖</span>
-        </div>
-      </div>
-
-    </aside>
-
-    <!-- ═══ 主内容 ═══ -->
-    <main class="main">
-
-      <div class="main-header">
-        <h1>郑传荣</h1>
-        <div class="sub">软件开发工程师 · 厦门工学院</div>
-        <a class="github" href="https://github.com/dghc2023" target="_blank">github.com/dghc2023</a>
-      </div>
-
-      <!-- 个人简介 -->
-      <div class="sec">
-        <div class="sec-head">
-          <span class="dot"></span>
-          <h2>个人简介</h2>
-          <span class="line"></span>
-        </div>
-        <div class="about-text">
-          软件工程专业本科在读，具备前后端全栈开发与 AI 应用落地经验。
-          熟悉 Vue3、SpringBoot 等主流框架，擅长 Python 自动化处理与 Dify 智能工作流搭建。
-          有多个校企合作项目实战经历，善于将技术方案转化为实际产品。
-        </div>
-      </div>
-
-      <!-- 项目经历 -->
-      <div class="sec">
-        <div class="sec-head">
-          <span class="dot"></span>
-          <h2>项目经历</h2>
-          <span class="line"></span>
-        </div>
-
-        <div class="proj">
-          <div class="proj-head">
-            <h3>学院考勤系统</h3>
-            <span class="date">2024.06 - 2024.12</span>
-          </div>
-          <div class="role">前后端开发 · 同学委会学习心理部合作</div>
-          <p>使用 Python 对全学院学位考勤文件进行自动化整理与处理，打包为 exe 可执行程序，节省人工时间 3-4 小时。</p>
-          <div class="proj-tags">
-            <span>Python</span><span>EXE打包</span><span>自动化办公</span>
-          </div>
-        </div>
-
-        <div class="proj">
-          <div class="proj-head">
-            <h3>智瞳 AI · 舆情分析系统</h3>
-            <span class="date">2024.07 - 2025.01</span>
-          </div>
-          <div class="role">AI 开发 · 同湖南永州网信办、校内外老师合作</div>
-          <p>使用 Python 爬虫获取并处理大量数据，搭建 Dify 工作流实现对舆情的智能判断与分析。</p>
-          <div class="proj-tags">
-            <span>Python</span><span>爬虫</span><span>Dify</span><span>工作流</span>
-          </div>
-        </div>
-
-        <div class="proj">
-          <div class="proj-head">
-            <h3>AI 心理诊疗系统</h3>
-            <span class="date">2024.07 - 2025.01</span>
-          </div>
-          <div class="role">AI 开发 · 同怡心园等老师合作</div>
-          <p>对接 AI 接口，对 AI 回复格式与内容进行微调，实现 AI 对个人信息的加密保护。
-            搭建 AI 心理 OH 卡功能，结合 Dify + RAG 实现梦境解析。</p>
-          <div class="proj-tags">
-            <span>Python</span><span>Dify</span><span>RAG</span><span>API</span>
-          </div>
-        </div>
-
-        <div class="proj">
-          <div class="proj-head">
-            <h3>赛车速度识别系统</h3>
-            <span class="date">2024.09 - 2025.03</span>
-          </div>
-          <div class="role">前后端开发 · 项目制（单子）</div>
-          <p>实现自动化对赛车视频中的速度值进行精准识别，并生成折线图进行数据对比分析。</p>
-          <div class="proj-tags">
-            <span>Python</span><span>OpenCV</span><span>数据可视化</span>
-          </div>
-        </div>
-
-        <div class="proj">
-          <div class="proj-head">
-            <h3>谷歌账号批量管理系统</h3>
-            <span class="date">2024.01 - 2024.05</span>
-          </div>
-          <div class="role">开发 · 项目制（单子）</div>
-          <p>采用 Python + 并发方式，批量自动化实现对谷歌账号信息的修改与管理。</p>
-          <div class="proj-tags">
-            <span>Python</span><span>并发</span><span>自动化</span>
-          </div>
-        </div>
-
-        <div class="proj">
-          <div class="proj-head">
-            <h3>AI 试衣系统</h3>
-            <span class="date">2025.01 - 2025.06</span>
-          </div>
-          <div class="role">前后端搭建 + API 调用 · 同重庆立泰服饰集团等合作</div>
-          <p>实现 AI 换衣功能及原型图搭建。已申请软件著作权，同 6 家企业签订合作意向书。</p>
-          <div class="proj-tags">
-            <span>Python</span><span>AI API</span><span>原型设计</span>
-          </div>
-        </div>
-
-        <div class="proj">
-          <div class="proj-head">
-            <h3>AI 舌诊系统</h3>
-            <span class="date">2025.06 - 2025.09</span>
-          </div>
-          <div class="role">前后端开发 · 同福建商学院团队合作</div>
-          <p>使用舌诊 API 实现对舌头图片的精准分析，结合知识库推荐营养餐。
-            使用 Sealos 部署程序实现公网访问。已申请软件著作权。</p>
-          <div class="proj-tags">
-            <span>Python</span><span>API</span><span>RAG</span><span>Sealos</span><span>Docker</span>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- 教育背景 -->
-      <div class="sec">
-        <div class="sec-head">
-          <span class="dot"></span>
-          <h2>教育背景</h2>
-          <span class="line"></span>
-        </div>
-        <div class="edu-item">
+    <!-- ===== 关于 ===== -->
+    <section class="section" id="about">
+      <div class="container">
+        <header class="sec-head reveal">
+          <span class="sec-num">01</span>
           <div>
-            <h3>软件工程</h3>
-            <div class="meta">厦门工学院 · 本科</div>
+            <h2 class="sec-title">关于我</h2>
+            <p class="sec-sub">能把想法独立做完的开发者</p>
           </div>
-          <span class="date">2023.09 - 2027.09</span>
+        </header>
+
+        <div class="about-grid">
+          <div class="reveal">
+            <!-- 配图（抽象几何，非人像）。想换成真人照片：把下面的 src 换成你的照片路径即可 -->
+            <img class="avatar" src="assets/about.jpg" alt="" width="1024" height="1536" loading="lazy" decoding="async">
+          </div>
+
+          <div class="about-text reveal">
+            <p>
+              我是郑传荣，厦门工学院软件工程本科生，方向是 AI Agent 开发。
+              熟悉前端 Vue3 / uni-app 与后端 Java（SpringBoot、若依）、Python（Django），
+              能独立完成从数据库设计、接口开发到阿里云部署的完整链路。
+            </p>
+            <p>
+              做过 AI 虚拟试穿与社交众筹的服装生态平台、中医体质辨识与膳食建议的健康系统，
+              以及面向大学生的求职信息聚合与智能推荐平台。技术上偏爱简单的架构，
+              也在持续用 LangChain、Milvus、Claude Code 这类工具打磨 AI 应用。
+            </p>
+          </div>
         </div>
       </div>
+    </section>
 
-      <!-- 在校经历 -->
-      <div class="sec">
-        <div class="sec-head">
-          <span class="dot"></span>
-          <h2>在校经历</h2>
-          <span class="line"></span>
-        </div>
-        <div class="about-text">
-          参加社团：计算机协会、AI 坊（核心成员）、华为坊、传习会（副会长）、友敏学委会（副部长）。<br>
-          参与并组织学校尊师节、上巳节等活动的后勤安排；参与校内外车站等志愿服务，累计志愿时长 70+ 小时。<br>
-          课设独立编写 C 语言 / Java / Node / SpringBoot 等课程设计，并指导小组成员完成报告。
+    <!-- ===== 技能 ===== -->
+    <section class="section section-alt" id="skills">
+      <div class="container">
+        <header class="sec-head reveal">
+          <span class="sec-num">02</span>
+          <div>
+            <h2 class="sec-title">技能</h2>
+            <p class="sec-sub">用得比较顺手的工具与方向</p>
+          </div>
+        </header>
+
+        <div class="skill-groups">
+          <div class="skill-group reveal">
+            <span class="sg-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2.5" y="4" width="19" height="16" rx="2.5"/>
+                <path d="M2.5 8.5h19"/>
+                <circle cx="5.7" cy="6.25" r=".75" fill="currentColor" stroke="none"/>
+                <circle cx="8.4" cy="6.25" r=".75" fill="currentColor" stroke="none"/>
+              </svg>
+            </span>
+            <h3>前端</h3>
+            <ul>
+              <li>HTML / CSS</li>
+              <li>JavaScript</li>
+              <li>Vue3 / uni-app</li>
+              <li>React</li>
+            </ul>
+          </div>
+
+          <div class="skill-group reveal">
+            <span class="sg-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3.5" width="18" height="7" rx="2"/>
+                <rect x="3" y="13.5" width="18" height="7" rx="2"/>
+                <circle cx="6.6" cy="7" r=".8" fill="currentColor" stroke="none"/>
+                <circle cx="6.6" cy="17" r=".8" fill="currentColor" stroke="none"/>
+              </svg>
+            </span>
+            <h3>后端</h3>
+            <ul>
+              <li>Java · SpringBoot / 若依</li>
+              <li>Python · Django</li>
+              <li>RESTful API 设计</li>
+            </ul>
+          </div>
+
+          <div class="skill-group reveal">
+            <span class="sg-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                <ellipse cx="12" cy="5.6" rx="7.5" ry="2.9"/>
+                <path d="M4.5 5.6v12.8c0 1.6 3.36 2.9 7.5 2.9s7.5-1.3 7.5-2.9V5.6"/>
+                <path d="M4.5 12c0 1.6 3.36 2.9 7.5 2.9s7.5-1.3 7.5-2.9"/>
+              </svg>
+            </span>
+            <h3>数据与运维</h3>
+            <ul>
+              <li>MySQL / PostgreSQL</li>
+              <li>Redis</li>
+              <li>Linux / Nginx / 阿里云部署</li>
+            </ul>
+          </div>
+
+          <div class="skill-group reveal">
+            <span class="sg-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="4.8" r="2.4"/>
+                <circle cx="4.8" cy="18.4" r="2.4"/>
+                <circle cx="19.2" cy="18.4" r="2.4"/>
+                <path d="M10.6 6.9 6.2 16.4M13.4 6.9l4.4 9.5M7.2 18.4h9.6"/>
+              </svg>
+            </span>
+            <h3>AI 开发</h3>
+            <ul>
+              <li>LangChain / RAG 检索增强</li>
+              <li>Milvus 向量数据库</li>
+              <li>微信小程序 · 多源爬虫</li>
+              <li>Cursor / Claude Code / openclaw</li>
+            </ul>
+          </div>
         </div>
       </div>
+    </section>
 
-    </main>
+    <!-- ===== 项目 ===== -->
+    <section class="section" id="projects">
+      <div class="container">
+        <header class="sec-head reveal">
+          <span class="sec-num">03</span>
+          <div>
+            <h2 class="sec-title">项目</h2>
+            <p class="sec-sub">三个从零到上线、独立做完的东西</p>
+          </div>
+        </header>
+
+        <div class="project-list">
+          <article class="project-row reveal">
+            <span class="pr-idx" aria-hidden="true">01</span>
+            <div class="pr-thumb">
+              <img src="assets/project-1.jpg" alt="" width="1536" height="1024" loading="lazy" decoding="async">
+            </div>
+            <div class="pr-main">
+              <h3>魔法衣橱平台</h3>
+              <p class="pr-role">独立开发 · 省级大创立项</p>
+              <p class="pr-desc">
+                融合 AI 虚拟试穿与社交众筹的定制服装生态平台，打通用户、设计师、
+                服装厂三方角色，从设计到生产形成完整业务闭环。前端 Vue3、后端 Django、
+                MySQL 数据库，部署于阿里云。
+              </p>
+              <ul class="pr-tags">
+                <li>Vue3</li><li>Django</li><li>MySQL</li><li>阿里云部署</li>
+              </ul>
+            </div>
+            <span class="pr-year">2025.09 – 2026.06</span>
+          </article>
+
+          <article class="project-row reveal">
+            <span class="pr-idx" aria-hidden="true">02</span>
+            <div class="pr-thumb">
+              <img src="assets/project-2.jpg" alt="" width="1536" height="1024" loading="lazy" decoding="async">
+            </div>
+            <div class="pr-main">
+              <h3>AI 体诊小程序</h3>
+              <p class="pr-role">独立开发 · 省级立项 · 2 项软件著作权</p>
+              <p class="pr-desc">
+                融合中医体质辨识与膳食建议的健康系统：用户填写体质问卷并上传舌部照片，
+                系统调用视觉模型识别舌象，结合中医体质分类国标判定，再由 AI 生成调理建议
+                与菜谱推荐。技术上用 LangChain 构建 RAG 链路、Milvus 做国标知识库语义检索。
+              </p>
+              <ul class="pr-tags">
+                <li>Vue3</li><li>SpringBoot</li><li>LangChain RAG</li><li>Milvus</li>
+              </ul>
+            </div>
+            <span class="pr-year">2025</span>
+          </article>
+
+          <article class="project-row reveal">
+            <span class="pr-idx" aria-hidden="true">03</span>
+            <div class="pr-thumb">
+              <img src="assets/project-3.jpg" alt="" width="1536" height="1024" loading="lazy" decoding="async">
+            </div>
+            <div class="pr-main">
+              <h3>寻途 · AI Agent 求职系统</h3>
+              <p class="pr-role">独立开发 · 微信小程序</p>
+              <p class="pr-desc">
+                面向大学生的求职信息聚合与智能推荐平台。多源爬虫聚合岗位、考证与竞赛信息，
+                引入 AI Agent 做语义理解与结构化处理，结合用户能力画像实现岗位、竞赛、
+                证书与项目的智能匹配。前端 uni-app 跨端，后端基于 Java 若依框架。
+              </p>
+              <ul class="pr-tags">
+                <li>uni-app</li><li>若依</li><li>AI Agent</li><li>多源爬虫</li>
+              </ul>
+            </div>
+            <span class="pr-year">2026.06 – 2026.09</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 证书 ===== -->
+    <section class="section section-alt" id="certs">
+      <div class="container">
+        <header class="sec-head reveal">
+          <span class="sec-num">04</span>
+          <div>
+            <h2 class="sec-title">证书</h2>
+            <p class="sec-sub">点击任意一张可以放大查看</p>
+          </div>
+        </header>
+
+        <div class="cert-grid">
+          <button class="cert-card reveal" type="button"
+                  data-full="certs/copyright-ai-constitution.jpg"
+                  data-title="软件著作权 · AI 体质检测与膳食推荐系统"
+                  data-note="登记号 2026SR0051189 · 2026.01.08">
+            <span class="cert-shot">
+              <img src="certs/copyright-ai-constitution.jpg" alt="计算机软件著作权登记证书：AI体质检测与膳食推荐系统" loading="lazy" decoding="async">
+            </span>
+            <span class="cert-cap">
+              <strong>软件著作权</strong>
+              <em>AI 体质检测与膳食推荐系统</em>
+            </span>
+          </button>
+
+          <button class="cert-card reveal" type="button"
+                  data-full="certs/copyright-disability-assessment.jpg"
+                  data-title="软件著作权 · 残障人士体质问卷智能评估与档案管理系统"
+                  data-note="登记号 2026SR0720282 · 2026.07.08">
+            <span class="cert-shot">
+              <img src="certs/copyright-disability-assessment.jpg" alt="计算机软件著作权登记证书：残障人士体质问卷智能评估与档案管理系统" loading="lazy" decoding="async">
+            </span>
+            <span class="cert-cap">
+              <strong>软件著作权</strong>
+              <em>残障人士体质问卷智能评估与档案管理系统</em>
+            </span>
+          </button>
+
+          <button class="cert-card reveal" type="button"
+                  data-full="certs/lanqiao-cup.jpg"
+                  data-title="蓝桥杯 · 省级三等奖"
+                  data-note="全国软件和信息技术专业人才大赛">
+            <span class="cert-shot">
+              <img src="certs/lanqiao-cup.jpg" alt="蓝桥杯省级三等奖证书" loading="lazy" decoding="async">
+            </span>
+            <span class="cert-cap">
+              <strong>蓝桥杯</strong>
+              <em>省级三等奖</em>
+            </span>
+          </button>
+
+          <button class="cert-card reveal" type="button"
+                  data-full="certs/huawei-developer-advanced.jpg"
+                  data-title="华为开发者认证 · 高级"
+                  data-note="HCIA / 开发者认证">
+            <span class="cert-shot">
+              <img src="certs/huawei-developer-advanced.jpg" alt="华为开发者认证高级证书" loading="lazy" decoding="async">
+            </span>
+            <span class="cert-cap">
+              <strong>华为开发者认证</strong>
+              <em>高级</em>
+            </span>
+          </button>
+        </div>
+
+        <div class="cert-extra reveal">
+          <h3>其他荣誉</h3>
+          <ul class="tags">
+            <li>省级大创结项 ×2</li>
+            <li>工信部初级人才证书</li>
+            <li>校赛奖项 ×7</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 联系 ===== -->
+    <section class="section" id="contact">
+      <div class="container">
+        <header class="sec-head reveal">
+          <span class="sec-num">05</span>
+          <div>
+            <h2 class="sec-title">联系我</h2>
+            <p class="sec-sub">实习、合作，或者只是想聊聊 AI，都欢迎</p>
+          </div>
+        </header>
+
+        <div class="contact-grid">
+          <div class="contact-item reveal">
+            <span class="ci-label">邮箱</span>
+            <a class="ci-value" href="mailto:3053714263@qq.com">3053714263@qq.com</a>
+            <button class="ci-copy" type="button" data-copy="3053714263@qq.com">复制</button>
+          </div>
+
+          <div class="contact-item reveal">
+            <span class="ci-label">电话</span>
+            <a class="ci-value" href="tel:15392458289">15392458289</a>
+            <button class="ci-copy" type="button" data-copy="15392458289">复制</button>
+          </div>
+
+          <div class="contact-item reveal">
+            <span class="ci-label">学校</span>
+            <span class="ci-value">厦门工学院 · 软件工程</span>
+            <span class="ci-note">2023.09 – 2027.06</span>
+          </div>
+
+          <div class="contact-item reveal">
+            <span class="ci-label">城市</span>
+            <span class="ci-value">中国 · 福建厦门</span>
+            <span class="ci-note">可远程 / 可到岗</span>
+          </div>
+        </div>
+
+        <p class="contact-foot reveal">发邮件最快，通常 24 小时内回复。</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== 页脚 ===== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> 郑传荣</p>
+      <p class="footer-made">HTML / CSS / JavaScript 手写 · 无框架无依赖</p>
+    </div>
+  </footer>
+
+  <!-- 回到顶部 -->
+  <button class="to-top" id="toTop" aria-label="回到顶部">
+    <svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><path d="M8 12.5V3.5M4.5 7 8 3.5 11.5 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+
+  <!-- 证书放大查看 -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="证书大图" hidden>
+    <button class="lb-btn lb-close" id="lbClose" type="button" aria-label="关闭（Esc）">
+      <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m4 4 8 8M12 4l-8 8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </button>
+    <button class="lb-btn lb-prev" id="lbPrev" type="button" aria-label="上一张（←）">
+      <svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path d="M10 3 5 8l5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <button class="lb-btn lb-next" id="lbNext" type="button" aria-label="下一张（→）">
+      <svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path d="m6 3 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+
+    <figure class="lb-figure">
+      <img id="lbImg" src="" alt="">
+      <figcaption>
+        <strong id="lbTitle"></strong>
+        <span id="lbNote"></span>
+      </figcaption>
+    </figure>
   </div>
 
-  <footer class="footer">
-    <p>&copy; 2026 郑传荣 · <a href="https://github.com/dghc2023" target="_blank">GitHub</a> · 在线简历 · <a href="#" onclick="window.print()">导出 PDF</a></p>
-  </footer>
-</div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+  <script src="script.js"></script>
 </body>
 </html>
